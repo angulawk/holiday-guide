@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
-import {
-  ThemeProvider
-} from "styled-components";
+import ReactDOM from "react-dom";
+import { CountryProvider } from "providers/CountryProvider";
+
+import { ThemeProvider } from "styled-components";
 
 import { theme } from "styles/theme";
 
@@ -13,7 +13,9 @@ import reportWebVitals from "./reportWebVitals";
 function renderApp(): void {
   ReactDOM.render(
     <ThemeProvider theme={theme}>
-      <App />
+      <CountryProvider>
+        <App />
+      </CountryProvider>
     </ThemeProvider>,
     document.getElementById("root")
   );

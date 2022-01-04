@@ -1,11 +1,11 @@
 import React, { Fragment } from "react";
 
-import { CountriesContainer } from "containers/CountriesContainer";
+import { CountryListContainer } from "containers/CountryListContainer";
 
 function App() {
   return (
     <Fragment>
-      <CountriesContainer />
+      <CountryListContainer />
     </Fragment>
   );
 }
