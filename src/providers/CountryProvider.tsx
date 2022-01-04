@@ -7,8 +7,6 @@ import {
   TAppStateKeys
 } from "providers/__typings__/CountryProvider";
 
-// import { getCountryList } from "api/getCountryList";
-
 const CountryContext = createContext<ICountryContext>({
   appState: {
     isGettingCountryList: false

@@ -17,6 +17,5 @@ export type TAppState = Record<TAppStateKeys, boolean>;
 export interface ICountryContext {
   appState: TAppState;
   isAppLoading: boolean;
-  // setCountryList: Dispatch<SetStateAction<never[]>>;
   updateAppState: (key: TAppStateKeys, value: boolean) => void;
 }
