@@ -15,7 +15,6 @@ const LayoutContainerWrapper = styled.div<ILayoutContainerProps>`
     display,
     flex,
     flexFlow,
-    height,
     justifyContent,
     left,
     marginBottom,
@@ -34,7 +33,6 @@ const LayoutContainerWrapper = styled.div<ILayoutContainerProps>`
     right,
     theme: { colorPalette, spacing, zIndex: zIndexVariables },
     top,
-    width,
     zIndex
   }): FlattenSimpleInterpolation => css`
     align-items: ${alignItems};
@@ -46,7 +44,6 @@ const LayoutContainerWrapper = styled.div<ILayoutContainerProps>`
     display: ${display && display};
     flex: ${flex && flex};
     flex-flow: ${flexFlow && flexFlow};
-    height: ${height && height in spacing && spacing[height as TSpacing] || height};
     justify-content: ${justifyContent && justifyContent};
     left: ${(left && left in spacing && spacing[left as TSpacing]) || left};
     margin-bottom: ${(marginBottom &&
@@ -89,7 +86,6 @@ const LayoutContainerWrapper = styled.div<ILayoutContainerProps>`
     position: ${position && position};
     right: ${(right && right in spacing && spacing[right as TSpacing]) || right};
     top: ${(top && top in spacing && spacing[top as TSpacing]) || top};
-    width: ${(width && width in spacing && spacing[width as TSpacing]) || width};
     z-index: ${zIndex && zIndex in zIndexVariables && zIndexVariables[zIndex]};
 
     ${customCss};
@@ -106,7 +102,6 @@ const LayoutContainer = (
     display = "block",
     flex = "none",
     flexFlow = "row wrap",
-    height = "auto",
     justifyContent = "center",
     left = "spacing0",
     marginBottom = "spacing0",
@@ -124,7 +119,6 @@ const LayoutContainer = (
     position = "relative",
     right = "spacing0",
     top = "spacing0",
-    width = "auto",
     zIndex = "layer0"
   }: ILayoutContainerProps
 ): JSX.Element => (
@@ -136,7 +130,6 @@ const LayoutContainer = (
     display={display}
     flex={flex}
     flexFlow={flexFlow}
-    height={height}
     justifyContent={justifyContent}
     left={left}
     marginBottom={marginBottom}
@@ -154,7 +147,6 @@ const LayoutContainer = (
     position={position}
     right={right}
     top={top}
-    width={width}
     zIndex={zIndex}
   >
     {children}

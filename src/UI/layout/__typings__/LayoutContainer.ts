@@ -21,7 +21,6 @@ export interface ILayoutContainerProps {
     | "column wrap"
     | "column nowrap"
     | "column-reverse";
-  height?: TSpacing | "auto" | "50%" | "100%" | string;
   justifyContent?:
     | "flex-start"
     | "flex-end"
@@ -45,6 +44,5 @@ export interface ILayoutContainerProps {
   position?: "static" | "relative" | "fixed" | "sticky" | "absolute";
   right?: TSpacing | "unset" | "50%" | "100%";
   top?: TSpacing | "unset" | "50%" | "100%";
-  width?: TSpacing | "auto" | "50%" | "100%" | string;
   zIndex?: TZIndex;
 }
