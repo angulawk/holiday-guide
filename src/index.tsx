@@ -3,12 +3,26 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { GlobalProvider } from "providers/GlobalProvider";
 
-import { ThemeProvider } from "styled-components";
+import {
+  createGlobalStyle,
+  DefaultTheme,
+  GlobalStyleComponent,
+  ThemeProvider
+} from "styled-components";
 
 import { theme } from "styles/theme";
 
+import { globalStyle } from "styles/globalStyle";
+
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+
+const GlobalStyle: GlobalStyleComponent<
+  unknown,
+  DefaultTheme
+> = createGlobalStyle`
+  ${globalStyle}
+`;
 
 function renderApp(): void {
   ReactDOM.render(
@@ -16,6 +30,7 @@ function renderApp(): void {
       <GlobalProvider>
         <App />
       </GlobalProvider>
+      <GlobalStyle />
     </ThemeProvider>,
     document.getElementById("root")
   );
