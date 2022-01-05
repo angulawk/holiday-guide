@@ -1,5 +1,5 @@
 import { colorPalette } from "styles/variables/colorPalette";
-// import { fontFamilies } from "styles/variables/fontFamilies";
+import { fontFamilies } from "styles/variables/fontFamilies";
 import { spacing } from "styles/variables/spacing";
 
 export const globalStyle = `
@@ -19,6 +19,7 @@ export const globalStyle = `
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: ${fontFamilies.FiraCode};
   }
 
   /* HTML5 display-role reset for older browsers */
@@ -82,6 +83,7 @@ export const globalStyle = `
   h4,
   h5,
   h6 {
+    font-family: ${fontFamilies.FiraCode};
   }
 
   ul,

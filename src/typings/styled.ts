@@ -10,6 +10,21 @@ declare module "styled-components" {
       white: string;
     };
 
+    fontFamilies: {
+      FiraCode: string;
+    };
+
+    fontSizes: {
+      font10: string;
+      font12: string;
+      font14: string;
+      font16: string;
+      font20: string;
+      font28: string;
+      font32: string;
+      font36: string;
+    };
+
     spacing: {
       spacing0: string;
       spacing2: string;
