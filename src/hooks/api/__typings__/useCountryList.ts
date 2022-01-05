@@ -1,6 +1,6 @@
-import { ICountryList } from "providers/__typings__/CountryProvider";
+import { TCountryList } from "api/__typings__/getCountryList";
 
 export interface IUseCountryList {
-  countryList: ICountryList[];
+  countryList: TCountryList;
   isGettingCountryList: boolean;
 }

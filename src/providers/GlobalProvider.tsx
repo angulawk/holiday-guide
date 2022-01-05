@@ -1,13 +1,13 @@
 import React, { createContext, useCallback, useState } from "react";
 
 import {
-  ICountryProviderProps,
-  ICountryContext,
+  IGlobalProviderProps,
+  IGlobalContext,
   TAppState,
   TAppStateKeys
-} from "providers/__typings__/CountryProvider";
+} from "providers/__typings__/GlobalProvider";
 
-const CountryContext = createContext<ICountryContext>({
+const GlobalContext = createContext<IGlobalContext>({
   appState: {
     isGettingCountryList: false
   },
@@ -15,7 +15,7 @@ const CountryContext = createContext<ICountryContext>({
   updateAppState: () => false
 });
 
-function CountryProvider({ children }: ICountryProviderProps): JSX.Element {  
+function GlobalProvider({ children }: IGlobalProviderProps): JSX.Element {  
   const [appState, setAppState] = useState<TAppState>({
     isGettingCountryList: false
   });
@@ -30,7 +30,7 @@ function CountryProvider({ children }: ICountryProviderProps): JSX.Element {
   const isAppLoading = Object.values(appState).includes(true);
 
   return (
-    <CountryContext.Provider
+    <GlobalContext.Provider
       value={{
         appState,
         isAppLoading,
@@ -38,10 +38,10 @@ function CountryProvider({ children }: ICountryProviderProps): JSX.Element {
       }}
     >
       {children}
-    </CountryContext.Provider>
+    </GlobalContext.Provider>
   );
 }
 
-export { CountryContext };
+export { GlobalContext };
 
-export { CountryProvider };
+export { GlobalProvider };

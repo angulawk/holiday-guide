@@ -1,27 +1,34 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 
 import { getCountryList } from "api/getCountryList";
-import { CountryContext } from "providers/CountryProvider";
+import { GlobalContext } from "providers/GlobalProvider";
 
 import { IUseCountryList } from "hooks/api/__typings__/useCountryList";
-import { ICountryContext } from "providers/__typings__/CountryProvider";
+import { IGlobalContext } from "providers/__typings__/GlobalProvider";
+import { TCountryList } from "api/__typings__/getCountryList";
 
 function useCountryList(): IUseCountryList {
-  const { updateAppState } = useContext<ICountryContext>(CountryContext);
+  const { updateAppState } = useContext<IGlobalContext>(GlobalContext);
 
-  const [countryList, setCountryList] = useState([]);
+  const [countryList, setCountryList] = useState<TCountryList>([]);
   const [isGettingCountryList, setIsGettingCountryList] = useState<boolean>(false);
 
   const fetchCountryList = useCallback(async () => {
-    setIsGettingCountryList(true);
     try {
+      setIsGettingCountryList(true);
+
       const response = await getCountryList();
 
-      setCountryList(response);
+      if(response) {
+        setCountryList(response);
+      }
+
+      setIsGettingCountryList(false);
     } catch (error) {
       console.error(error);
+
+      setIsGettingCountryList(false);
     }
-    setIsGettingCountryList(false);
   }, []);
 
   useEffect(() => {
