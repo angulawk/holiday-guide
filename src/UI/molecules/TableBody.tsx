@@ -14,9 +14,7 @@ const TableBodyContainer = styled.tbody`
   width: 100%;
 `;
 
-const TABLE_LIMIT = 20;
-
-const emptyArray = new Array(TABLE_LIMIT);
+const emptyArray = new Array(20);
 
 const TableBody = ({
   isLoading = false,

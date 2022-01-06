@@ -115,6 +115,7 @@ TableRow.propTypes = {
     PropTypes.string,
     PropTypes.number
   ]),
+  isEven: PropTypes.bool,
   isLoading: PropTypes.bool,
   isVisible: PropTypes.bool,
   numberOfColumns: PropTypes.number

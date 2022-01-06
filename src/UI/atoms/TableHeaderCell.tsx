@@ -46,10 +46,8 @@ const TableHeaderCell = ({
 
 TableHeaderCell.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-    PropTypes.string,
-    PropTypes.number
+    PropTypes.string
   ]).isRequired,
   width: PropTypes.string
 };

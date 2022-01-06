@@ -5,10 +5,11 @@ import { HeaderGroup } from "react-table";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 import { TableHeaderCell } from "UI/atoms/TableHeaderCell";
+import { TableRow } from "UI/molecules/TableRow";
+
 import {
   ITableHeadProps
 } from "UI/molecules/__typings__/TableHead";
-import { TableRow } from "UI/molecules/TableRow";
 
 const TableHeadContainer = styled.thead`
   ${({

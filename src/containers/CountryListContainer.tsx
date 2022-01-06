@@ -16,7 +16,7 @@ function CountryListContainer(): JSX.Element {
         alpha3Code,
         name,
         flag: (
-          <Image alt="some alt" src={`https://flagcdn.com/32x24/${alpha2Code.toLowerCase()}.png`} />
+          <Image alt={`${name} flag`} src={`https://flagcdn.com/32x24/${alpha2Code.toLowerCase()}.png`} />
         )
       })), [countryList]
   );

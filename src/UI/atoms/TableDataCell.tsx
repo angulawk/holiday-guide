@@ -58,10 +58,8 @@ const TableDataCell = ({
 
 TableDataCell.propTypes = {
   children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
     PropTypes.node,
-    PropTypes.string,
-    PropTypes.number
+    PropTypes.string
   ]).isRequired,
   colSpan: PropTypes.number,
   isLoading: PropTypes.bool,

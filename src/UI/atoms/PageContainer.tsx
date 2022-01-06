@@ -5,7 +5,7 @@ import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 import { IPageContainerProps } from "UI/atoms/__typings__/PageContainer";
 
-const PageWrapper = styled.div`
+const PageContainerWrapper = styled.div`
   ${({
     theme: {
       spacing: { spacing48, spacing96, spacing1280 }
@@ -21,9 +21,9 @@ const PageWrapper = styled.div`
 const PageContainer = ({
   children
 }: IPageContainerProps): JSX.Element => (
-  <PageWrapper>
+  <PageContainerWrapper>
     {children}
-  </PageWrapper>
+  </PageContainerWrapper>
 );
 
 PageContainer.propTypes = {

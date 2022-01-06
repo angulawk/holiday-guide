@@ -1,7 +1,7 @@
 export type TTextAlign = "left" | "center" | "right";
 
 export interface ITableDataCellProps {
-  children: string | number | JSX.Element | JSX.Element[] | React.ReactNode;
+  children: string | JSX.Element | React.ReactNode;
   colSpan?: number;
   isLoading?: boolean;
   lineHeight?: string;

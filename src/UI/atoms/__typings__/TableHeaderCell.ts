@@ -1,4 +1,4 @@
 export interface ITableHeaderCellProps {
-  children: string | number | JSX.Element | JSX.Element[] | React.ReactNode;
+  children: string | JSX.Element | React.ReactNode;
   width?: string | number;
 }
