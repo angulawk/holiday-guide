@@ -11,7 +11,6 @@ export interface ILayoutContainerProps {
   backgroundColor?: TColorPalette;
   bottom?: TSpacing | "unset" | "50%" | "100%";
   children: JSX.Element | JSX.Element[] | React.ReactNode;
-  className?: string;
   customCss?: string;
   display?: "block" | "inline-block" | "flex" | "inline-flex" | "grid";
   flex?: string;
@@ -29,18 +28,18 @@ export interface ILayoutContainerProps {
     | "stretch"
     | "space-around";
   left?: TSpacing | "50%" | "100%";
-  marginBottom?: TSpacing | "auto" | string;
-  marginLeft?: TSpacing | "auto" | string;
-  marginRight?: TSpacing | "auto" | string;
-  marginTop?: TSpacing | "auto" | string;
-  maxHeight?: string;
-  maxWidth?: TSpacing | string;
+  marginBottom?: TSpacing;
+  marginLeft?: TSpacing;
+  marginRight?: TSpacing;
+  marginTop?: TSpacing;
+  maxHeight?: string | "initial";
+  maxWidth?: TSpacing | "initial";
   minHeight?: TSpacing;
   minWidth?: TSpacing | "auto";
-  paddingBottom?: TSpacing | "auto" | string;
-  paddingLeft?: TSpacing | "auto" | string;
-  paddingRight?: TSpacing | "auto" | string;
-  paddingTop?: TSpacing | "auto" | string;
+  paddingBottom?: TSpacing;
+  paddingLeft?: TSpacing;
+  paddingRight?: TSpacing;
+  paddingTop?: TSpacing;
   position?: "static" | "relative" | "fixed" | "sticky" | "absolute";
   right?: TSpacing | "unset" | "50%" | "100%";
   top?: TSpacing | "unset" | "50%" | "100%";

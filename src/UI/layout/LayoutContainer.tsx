@@ -1,10 +1,15 @@
 import React from "react";
 
+import PropTypes from "prop-types";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+
+import { colorPalette } from "styles/variables/colorPalette";
+import { spacing } from "styles/variables/spacing";
 
 import { TSpacing } from "styles/variables/__typings__/variables";
 
 import { ILayoutContainerProps } from "UI/layout/__typings__/LayoutContainer";
+import { zIndex } from "styles/variables/zIndex";
 
 const LayoutContainerWrapper = styled.div<ILayoutContainerProps>`
   ${({
@@ -152,5 +157,38 @@ const LayoutContainer = (
     {children}
   </LayoutContainerWrapper>
 );
+
+LayoutContainer.propTypes = {
+  alignItems: PropTypes.oneOf(["stretch", "flex-start", "flex-end", "center", "baseline"]),
+  backgroundColor: PropTypes.oneOf([...Object.keys(colorPalette)]),
+  bottom: PropTypes.oneOf([...Object.keys(spacing), "unset", "50%", "100%"]),
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.number,
+    PropTypes.string
+  ]).isRequired,
+  customCss: PropTypes.string,
+  display: PropTypes.oneOf(["block", "inline-block", "flex", "inline-flex", "grid"]),
+  flex: PropTypes.string,
+  flexFlow: PropTypes.oneOf(["row wrap", "row nowrap", "column wrap", "column nowrap", "column-reverse"]),
+  justifyContent: PropTypes.oneOf(["flex-start", "flex-end", "center", "space-between", "stretch", "space-around"]),
+  left: PropTypes.oneOf([...Object.keys(spacing), "50%", "100%"]),
+  marginBottom: PropTypes.oneOf([...Object.keys(spacing)]),
+  marginLeft: PropTypes.oneOf([...Object.keys(spacing)]),
+  marginRight: PropTypes.oneOf([...Object.keys(spacing)]),
+  marginTop: PropTypes.oneOf([...Object.keys(spacing)]),
+  maxHeight: PropTypes.oneOf([PropTypes.string, "initial"]),
+  maxWidth: PropTypes.oneOf([...Object.keys(spacing), "initial"]),
+  minHeight: PropTypes.oneOf([...Object.keys(spacing)]),
+  minWidth: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingBottom: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingLeft: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingRight: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingTop: PropTypes.oneOf([...Object.keys(spacing)]),
+  position: PropTypes.oneOf(["static", "relative", "fixed", "sticky", "absolute"]),
+  right: PropTypes.oneOf([...Object.keys(spacing), "unset", "50%", "100%"]),
+  top: PropTypes.oneOf([...Object.keys(spacing), "unset", "50%", "100%"]),
+  zIndex: PropTypes.oneOf([...Object.keys(zIndex), "unset", "50%", "100%"]),
+};
 
 export { LayoutContainer };
