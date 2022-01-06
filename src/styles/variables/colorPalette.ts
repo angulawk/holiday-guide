@@ -4,8 +4,8 @@ export const colorPalette = {
   black500: "#000000",
 
   //Blue
-  blue200: "#00CEC9",
-  blue400: "#81ECEC",
+  blue200: "#81ECEC",
+  blue400: "#00CEC9",
 
   //White
   white: "#FFFFFF"

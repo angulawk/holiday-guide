@@ -25,6 +25,12 @@ declare module "styled-components" {
       font36: string;
     };
 
+    fontWeights: {
+      light: string;
+      medium: string;
+      regular: string;
+    };
+
     spacing: {
       spacing0: string;
       spacing2: string;
@@ -41,6 +47,8 @@ declare module "styled-components" {
       spacing48: string;
       spacing56: string;
       spacing64: string;
+      spacing96: string;
+      spacing1280: string;  
     };
 
     zIndex: {

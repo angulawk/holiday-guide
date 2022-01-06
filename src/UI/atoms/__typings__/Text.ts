@@ -2,6 +2,7 @@ import {
   TColorPalette,
   TFontFamilies,
   TFontSizes,
+  TFontWeights,
   TSpacing
 } from "styles/variables/__typings__/variables";
 
@@ -13,7 +14,10 @@ export interface ITextProps {
   ellipsis?: boolean;
   fontFamily?: TFontFamilies;
   fontSize?: TFontSizes;
+  fontWeight?: TFontWeights;
   lineHeight?: TSpacing | "1";
+  paddingBottom?: TSpacing;
+  paddingTop?: TSpacing;
   textAlign?: "left" | "center" | "right";
   textTransform?: "none" | "lowercase" | "uppercase" | "capitalize";
 }
