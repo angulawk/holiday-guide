@@ -74,7 +74,7 @@ export const globalStyle = `
 
   ::selection { 
     background: ${colorPalette.blue200}; 
-    color: ${colorPalette.white}; 
+    color: ${colorPalette.black500}; 
   }
 
   h1,
