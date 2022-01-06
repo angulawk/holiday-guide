@@ -23,7 +23,7 @@ const TextContainer = styled.div<ITextProps>`
     paddingTop,
     textAlign,
     textTransform,
-    theme: { colorPalette, fontFamilies, fontSizes, fontWeights, spacing }
+    theme: { colorPalette, fontSizes, fontWeights, spacing }
   }): FlattenSimpleInterpolation => css`
     color: ${color && color in colorPalette && colorPalette[color]};
     display: ${display};
