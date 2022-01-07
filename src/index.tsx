@@ -1,6 +1,9 @@
 import React from "react";
 
 import ReactDOM from "react-dom";
+
+import { BrowserRouter as Router } from "react-router-dom";
+
 import { GlobalProvider } from "providers/GlobalProvider";
 
 import {
@@ -27,10 +30,12 @@ const GlobalStyle: GlobalStyleComponent<
 function renderApp(): void {
   ReactDOM.render(
     <ThemeProvider theme={theme}>
-      <GlobalProvider>
-        <App />
-      </GlobalProvider>
-      <GlobalStyle />
+      <Router>
+        <GlobalProvider>
+          <App />
+        </GlobalProvider>
+        <GlobalStyle />
+      </Router>
     </ThemeProvider>,
     document.getElementById("root")
   );

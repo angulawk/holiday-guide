@@ -4,4 +4,5 @@ export interface ITableRowProps {
   isLoading?: boolean;
   isVisible?: boolean;
   numberOfColumns?: number;
+  onClick?: () => void;
 }

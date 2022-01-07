@@ -20,6 +20,7 @@ const TableBody = ({
   isLoading = false,
   numberOfColumns = 1,
   noResultsText,
+  onRowClick,
   prepareRow,
   rows
 }: ITableBodyProps): JSX.Element => {
@@ -53,10 +54,14 @@ const TableBody = ({
           (row: Row<Record<string, string | JSX.Element | unknown>>) => {
             prepareRow(row);
 
-            return (
+            const rowOriginal = row?.original;
+            const alpha3Code = rowOriginal?.alpha3Code as string;
+
+            return (      
               <TableRow
                 key={row?.getRowProps()?.key}
                 numberOfColumns={numberOfColumns}
+                onClick={() => onRowClick(alpha3Code)}
               >
                 {row?.cells?.map(
                   (

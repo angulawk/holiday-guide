@@ -20,6 +20,8 @@ const TextContainer = styled.div<ITextProps>`
     fontWeight,
     lineHeight,
     paddingBottom,
+    paddingLeft,
+    paddingRight,
     paddingTop,
     textAlign,
     textTransform,
@@ -37,6 +39,14 @@ const TextContainer = styled.div<ITextProps>`
       paddingBottom in spacing &&
       spacing[paddingBottom]) ||
     paddingBottom};
+    padding-left: ${(paddingLeft &&
+      paddingLeft in spacing &&
+      spacing[paddingLeft]) ||
+    paddingLeft};
+    padding-right: ${(paddingRight &&
+      paddingRight in spacing &&
+      spacing[paddingRight]) ||
+    paddingRight};
     padding-top: ${(paddingTop &&
       paddingTop in spacing &&
       spacing[paddingTop]) ||
@@ -64,6 +74,8 @@ const Text = (
     fontWeight = "regular",
     lineHeight = "1",
     paddingBottom = "spacing0",
+    paddingLeft = "spacing0",
+    paddingRight = "spacing0",
     paddingTop = "spacing0",
     textAlign = "left",
     textTransform = "none"
@@ -78,6 +90,8 @@ const Text = (
     fontWeight={fontWeight}
     lineHeight={lineHeight}
     paddingBottom={paddingBottom}
+    paddingLeft={paddingLeft}
+    paddingRight={paddingRight}
     paddingTop={paddingTop}
     textAlign={textAlign}
     textTransform={textTransform}
@@ -100,6 +114,8 @@ Text.propTypes = {
   fontWeight: PropTypes.oneOf([...Object.keys(fontWeights)]),
   lineHeight: PropTypes.oneOf([...Object.keys(spacing)]),
   paddingBottom: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingLeft: PropTypes.oneOf([...Object.keys(spacing)]),
+  paddingRight: PropTypes.oneOf([...Object.keys(spacing)]),
   paddingTop: PropTypes.oneOf([...Object.keys(spacing)]),
   textAlign: PropTypes.oneOf(["left", "center", "right"]),
   textTransform: PropTypes.oneOf(["none", "lowercase", "uppercase", "capitalize"])
