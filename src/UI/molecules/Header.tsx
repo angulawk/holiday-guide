@@ -17,26 +17,26 @@ const headerCustomCss = `
 
 function Header(): JSX.Element {
   return (
-    <Link to="/">
-      <LayoutContainer
-        customCss={headerCustomCss}
-        display="flex"
-        left="spacing0"
-        justifyContent="space-between"
-        paddingBottom="spacing24"
-        paddingLeft="spacing64"
-        paddingRight="spacing64"
-        paddingTop="spacing24"
-        position="fixed"
-        right="spacing0"
-        top="spacing0"
-      >
+    <LayoutContainer
+      customCss={headerCustomCss}
+      display="flex"
+      left="spacing0"
+      justifyContent="space-between"
+      paddingBottom="spacing24"
+      paddingLeft="spacing64"
+      paddingRight="spacing64"
+      paddingTop="spacing24"
+      position="fixed"
+      right="spacing0"
+      top="spacing0"
+    >
+      <Link to="/">
         <Image
           alt="Holidays Guide Logo"
           src="/images/svg/Icon-Logo.svg"
         />
-      </LayoutContainer>
-    </Link>
+      </Link>
+    </LayoutContainer>
   );
 }
 

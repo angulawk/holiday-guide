@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 
 import PropTypes from "prop-types";
 import { useTable } from "react-table";
@@ -12,7 +12,6 @@ import { TableHead } from "UI/molecules/TableHead";
 import {
   ITableProps
 } from "UI/organisms/__typings__/Table";
-import { useCallback } from "react";
 
 const TableContainer = styled.table`
   ${({

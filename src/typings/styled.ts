@@ -10,6 +10,10 @@ declare module "styled-components" {
       white: string;
     };
 
+    easing: {
+      easeInOut: string;
+    }
+
     fontFamilies: {
       FiraCode: string;
     };
@@ -51,6 +55,10 @@ declare module "styled-components" {
       spacing128: string;
       spacing1280: string;  
     };
+
+    transitionTimes: {
+      fast: string;
+    }
 
     zIndex: {
       layer0: string;

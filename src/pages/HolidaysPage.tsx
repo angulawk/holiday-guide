@@ -4,10 +4,10 @@ import { useMatch } from "react-router-dom";
 
 import { Header } from "UI/molecules/Header";
 
-import { HolidaysDetails } from "containers/HolidaysDetails";
+import { HolidaysContainer } from "containers/HolidaysContainer";
 
 const HolidaysPage = (): JSX.Element => {
-  const holidaysNameMatch = useMatch(
+  const holidaysMatch = useMatch(
     "/holidays/:alpha3Code"
   );
 
@@ -15,7 +15,7 @@ const HolidaysPage = (): JSX.Element => {
     <Fragment>
       <Header />
 
-      {holidaysNameMatch && <HolidaysDetails />}
+      {holidaysMatch && <HolidaysContainer />}
     </Fragment>
   );
 };

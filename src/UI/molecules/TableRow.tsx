@@ -15,7 +15,9 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
     onClick,
     theme: {
       colorPalette: { blue400, black400, blue200 },
-      spacing: {  spacing48 }
+      easing: { easeInOut },
+      spacing: {  spacing48 },
+      transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
     color: ${black400};
@@ -30,7 +32,7 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
 
     &:hover {
       background-color: ${blue200};
-      transition: all 150ms ease-in-out;
+      transition: all ${fast} ${easeInOut};
     }
   `};
 `;

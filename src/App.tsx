@@ -2,9 +2,9 @@ import React from "react";
 
 import { Routes, Route } from "react-router-dom";
 
-import { HomePage } from "pages/Home/HomePage";
-import { NoMatchPage } from "pages/NoMatch/NoMatchPage";
-import { HolidaysPage } from "pages/Holidays/HolidaysPage";
+import { HomePage } from "pages/HomePage";
+import { NoMatchPage } from "pages/NoMatchPage";
+import { HolidaysPage } from "pages/HolidaysPage";
 
 function App() {
   return (
