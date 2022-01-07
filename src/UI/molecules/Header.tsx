@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Link } from "react-router-dom";
+
 import { colorPalette } from "styles/variables/colorPalette";
 import { spacing } from "styles/variables/spacing";
 import { zIndex } from "styles/variables/zIndex";
@@ -28,10 +30,12 @@ function Header(): JSX.Element {
       right="spacing0"
       top="spacing0"
     >
-      <Image
-        alt="Holidays Guide Logo"
-        src="/images/svg/Icon-Logo.svg"
-      />
+      <Link to="/">
+        <Image
+          alt="Holidays Guide Logo"
+          src="/images/svg/Icon-Logo.svg"
+        />
+      </Link>
     </LayoutContainer>
   );
 }

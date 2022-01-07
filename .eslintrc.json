@@ -6,6 +6,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended",
         "plugin:import/typescript"
     ],
@@ -19,11 +20,14 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks"
     ],
     "rules": {
         "indent": ["error", 2],
         "quotes": ["error", "double"],
-        "semi": ["error", "always"]
+        "semi": ["error", "always"],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"    
     }
 }

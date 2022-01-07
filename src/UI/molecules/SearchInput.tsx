@@ -28,7 +28,7 @@ function SearchInput({
 
     setInternalValue(_value);
     onChange?.(_value);
-  }, []);
+  }, [onChange]);
 
   return (
     <Input 

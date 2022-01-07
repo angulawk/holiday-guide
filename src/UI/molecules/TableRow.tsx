@@ -12,17 +12,26 @@ import { ITableRowProps } from "UI/molecules/__typings__/TableRow";
 const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
   ${({
     isLoading,
+    onClick,
     theme: {
-      colorPalette: { blue400, black400 },
-      spacing: {  spacing48 }
+      colorPalette: { blue400, black400, blue200 },
+      easing: { easeInOut },
+      spacing: {  spacing48 },
+      transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
     color: ${black400};
+    ${onClick && "cursor: pointer;"}
     height: ${spacing48};
     ${isLoading && "width: 100%;"}
 
     &:nth-child(even) {
       background-color: ${blue400};
+    }
+
+    &:hover {
+      background-color: ${blue200};
+      transition: all ${fast} ${easeInOut};
     }
   `};
 `;
@@ -32,10 +41,12 @@ const TableRow = ({
   isEven = false,
   isLoading = false,
   isVisible = true,
-  numberOfColumns
+  numberOfColumns,
+  onClick
 }: ITableRowProps): JSX.Element => (
   <TableRowContainer
     isLoading={isLoading}
+    onClick={onClick}
   >
     {renderTableRowContent({
       children,

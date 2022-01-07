@@ -15,6 +15,8 @@ export interface ITextProps {
   fontWeight?: TFontWeights;
   lineHeight?: TSpacing | "1";
   paddingBottom?: TSpacing;
+  paddingLeft?: TSpacing;
+  paddingRight?: TSpacing;
   paddingTop?: TSpacing;
   textAlign?: "left" | "center" | "right";
   textTransform?: "none" | "lowercase" | "uppercase" | "capitalize";
