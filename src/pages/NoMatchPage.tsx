@@ -28,7 +28,7 @@ function NoMatchPage(): JSX.Element {
         paddingTop="spacing28"
         textAlign="center"
       >
-        Website was not found
+        This site was not found
       </Text>
     </LayoutContainer>
   );

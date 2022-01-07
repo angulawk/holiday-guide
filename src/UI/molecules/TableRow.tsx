@@ -21,10 +21,9 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
     }
   }): FlattenSimpleInterpolation => css`
     color: ${black400};
+    ${onClick && "cursor: pointer;"}
     height: ${spacing48};
     ${isLoading && "width: 100%;"}
-
-    ${onClick && "cursor: pointer;"}
 
     &:nth-child(even) {
       background-color: ${blue400};
@@ -37,29 +36,27 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
   `};
 `;
 
-function TableRow({
+const TableRow = ({
   children,
   isEven = false,
   isLoading = false,
   isVisible = true,
   numberOfColumns,
   onClick
-}: ITableRowProps): JSX.Element {
-  return (
-    <TableRowContainer
-      isLoading={isLoading}
-      onClick={onClick}
-    >
-      {renderTableRowContent({
-        children,
-        isEven,
-        isLoading,
-        isVisible,
-        numberOfColumns
-      })}
-    </TableRowContainer>
-  );
-}
+}: ITableRowProps): JSX.Element => (
+  <TableRowContainer
+    isLoading={isLoading}
+    onClick={onClick}
+  >
+    {renderTableRowContent({
+      children,
+      isEven,
+      isLoading,
+      isVisible,
+      numberOfColumns
+    })}
+  </TableRowContainer>
+);
 
 function renderTableRowContent({
   children,

@@ -33,7 +33,7 @@ function useCountryList(): IUseCountryList {
 
   useEffect(() => {
     fetchCountryList();
-  }, []);
+  }, [fetchCountryList]);
   
   useEffect(() => {
     updateAppState("isGettingCountryList", isGettingCountryList);

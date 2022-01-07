@@ -48,7 +48,7 @@ function Table({
 
   const handleRowClick = useCallback((name: string) => {
     navigate(`/holidays/${name.toLowerCase()}`);
-  }, []);
+  }, [navigate]);
 
   return (
     <LayoutContainer paddingBottom="spacing2">
