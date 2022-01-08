@@ -9,7 +9,8 @@ import {
 
 const GlobalContext = createContext<IGlobalContext>({
   appState: {
-    isGettingCountryList: false
+    isGettingCountryList: false,
+    isGettingHolidaysList: false
   },
   isAppLoading: false,
   updateAppState: () => false
@@ -17,7 +18,8 @@ const GlobalContext = createContext<IGlobalContext>({
 
 function GlobalProvider({ children }: IGlobalProviderProps): JSX.Element {  
   const [appState, setAppState] = useState<TAppState>({
-    isGettingCountryList: false
+    isGettingCountryList: false,
+    isGettingHolidaysList: false
   });
 
   const updateAppState = useCallback((key: TAppStateKeys, value: boolean) => {

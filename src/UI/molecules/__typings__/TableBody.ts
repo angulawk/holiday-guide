@@ -4,7 +4,7 @@ export interface ITableBodyProps {
   isLoading?: boolean;
   noResultsText: string;
   numberOfColumns?: number;
-  onRowClick: (alpha3Code: string) => void;
+  onRowClick: (alpha2Code: string) => void;
   prepareRow: (
     row: Row<Record<string, string | JSX.Element | unknown>>
   ) => void;

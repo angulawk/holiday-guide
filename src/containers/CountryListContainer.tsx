@@ -15,6 +15,7 @@ function CountryListContainer(): JSX.Element {
   const tableData = useMemo(
     () =>
       countryList?.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase())).map(({ name, alpha2Code, alpha3Code }) => ({
+        alpha2Code,
         alpha3Code,
         name,
         flag: (

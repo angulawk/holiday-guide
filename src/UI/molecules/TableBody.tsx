@@ -55,13 +55,13 @@ const TableBody = ({
             prepareRow(row);
 
             const rowOriginal = row?.original;
-            const alpha3Code = rowOriginal?.alpha3Code as string;
+            const alpha2Code = rowOriginal?.alpha2Code as string;
 
             return (      
               <TableRow
                 key={row?.getRowProps()?.key}
                 numberOfColumns={numberOfColumns}
-                onClick={() => onRowClick(alpha3Code)}
+                onClick={() => onRowClick(alpha2Code)}
               >
                 {row?.cells?.map(
                   (
