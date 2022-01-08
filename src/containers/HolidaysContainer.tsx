@@ -39,8 +39,6 @@ function HolidaysContainer(): JSX.Element {
       })), [holidaysList]
   );
 
-  console.log("eventsList", eventsList);
-
   return (
     <PageContainer>
       <HolidaysDetails
