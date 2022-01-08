@@ -12,17 +12,15 @@ import { TSpacing } from "styles/variables/__typings__/variables";
 const TableHeaderCellContainer = styled.th<Partial<ITableHeaderCellProps>>`
   ${({
     theme: {
-      colorPalette: { blue400, black400 },
+      colorPalette: { black400, white },
       fontSizes: { font20 },
       fontWeights: { medium },
       spacing
     },
     width
   }): FlattenSimpleInterpolation => css`
-    background-color: ${blue400};
-    border-bottom: 1px solid ${blue400};
-    border-top: 1px solid ${blue400};
-    color: ${black400};
+    border-bottom: 1px solid ${black400};
+    color: ${white};
     font-size: ${font20};
     font-weight: ${medium};
     height: ${spacing.spacing56};

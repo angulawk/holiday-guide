@@ -14,23 +14,24 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
     isLoading,
     onClick,
     theme: {
-      colorPalette: { blue400, black400, blue200 },
+      colorPalette: { blue200, blue400, black200, white },
       easing: { easeInOut },
-      spacing: {  spacing48 },
+      spacing: {  spacing56 },
       transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
-    color: ${black400};
+    color: ${black200};
     ${onClick && "cursor: pointer;"}
-    height: ${spacing48};
+    height: ${spacing56};
     ${isLoading && "width: 100%;"}
 
     &:nth-child(even) {
-      background-color: ${blue400};
+      background-color: ${blue200};
     }
 
     &:hover {
-      background-color: ${blue200};
+      color: ${white};
+      background-color: ${blue400};
       transition: all ${fast} ${easeInOut};
     }
   `};

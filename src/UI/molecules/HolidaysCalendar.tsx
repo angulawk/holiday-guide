@@ -6,14 +6,18 @@ import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 import PropTypes from "prop-types";
 
-import { LayoutContainer } from "UI/layout/LayoutContainer";
-
 import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { IHolidaysCalendarProps } from "UI/molecules/__typings__/HolidaysCalendar";
+import { LayoutContainer } from "UI/layout/LayoutContainer";
+import { CalendarKey } from "UI/molecules/CalendarKey";
+import { Text } from "UI/atoms/Text";
+
 import { colorPalette } from "styles/variables/colorPalette";
 import { spacing } from "styles/variables/spacing";
+import { fontSizes } from "styles/variables/fontSizes";
+
+import { IHolidaysCalendarProps } from "UI/molecules/__typings__/HolidaysCalendar";
 
 const localizer = momentLocalizer(moment);
 
@@ -21,11 +25,12 @@ const HolidaysCalendarContainer = styled(Calendar)`
   ${({
     theme: {
       breakpoints: { breakpoint640, breakpoint641, breakpoint800 },
-      spacing: { spacing400, spacing500, spacing800 },
+      spacing: { spacing16, spacing400, spacing500, spacing800 },
       zIndex: { layer9 }
     }
   }): FlattenSimpleInterpolation => css`
     height: ${spacing800};
+    margin-bottom: ${spacing16};
     z-index: ${layer9};
 
     @media(max-width: ${breakpoint800}) and (min-width: ${breakpoint641}) {
@@ -42,8 +47,9 @@ function eventStyleGetter(event: any) {
   const isPublic = event?.isPublic;
 
   const style = {
-    backgroundColor: isPublic ? colorPalette.black500 : colorPalette.blue400,
+    backgroundColor: isPublic ? colorPalette.black200 : colorPalette.blue400,
     borderRadius: "0px",
+    fontSize: fontSizes.font14,
     height: spacing.spacing16,
     opacity: 0.8,
     color: "white",
@@ -66,6 +72,18 @@ const HolidaysCalendar = ({
       events={eventsList}
       localizer={localizer}
     />
+
+    <Text>Calendar keys</Text>
+    <LayoutContainer display="flex">
+      <CalendarKey
+        calendarKeyText="Non public holidays"
+        color="blue400"
+      />
+      <CalendarKey
+        calendarKeyText="Public holidays"
+        color="black400"
+      />
+    </LayoutContainer>
   </LayoutContainer>
 );
 
