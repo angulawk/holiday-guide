@@ -8,7 +8,7 @@ import { HolidaysContainer } from "containers/HolidaysContainer";
 
 const HolidaysPage = (): JSX.Element => {
   const holidaysMatch = useMatch(
-    "/holidays/:alpha3Code"
+    "/holidays/:alpha2Code"
   );
 
   return (

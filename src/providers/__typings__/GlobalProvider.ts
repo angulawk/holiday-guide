@@ -5,7 +5,8 @@ export interface IGlobalProviderProps {
 }
 
 export type TAppStateKeys =
-  | "isGettingCountryList";
+  | "isGettingCountryList"
+  | "isGettingHolidaysList";
 
 export type TAppState = Record<TAppStateKeys, boolean>;
 
