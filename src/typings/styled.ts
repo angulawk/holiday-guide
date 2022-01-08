@@ -2,6 +2,17 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DefaultTheme {
+    breakpoints: {
+      breakpoint640: string;
+      breakpoint641: string;
+      breakpoint800: string;
+      breakpoint801: string;
+      breakpoint1280: string;
+      breakpoint1281: string;
+      breakpoint1680: string;
+      breakpoint1681: string;
+    };
+
     colorPalette: {
       black400: string;
       black500: string;
@@ -53,6 +64,9 @@ declare module "styled-components" {
       spacing64: string;
       spacing96: string;
       spacing128: string;
+      spacing400: string;
+      spacing500: string;
+      spacing800: string;
       spacing1280: string;  
     };
 

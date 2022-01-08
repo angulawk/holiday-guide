@@ -8,13 +8,18 @@ import { IPageContainerProps } from "UI/atoms/__typings__/PageContainer";
 const PageContainerWrapper = styled.div`
   ${({
     theme: {
-      spacing: { spacing48, spacing96, spacing1280 }
+      breakpoints: { breakpoint640 },
+      spacing: { spacing24, spacing48, spacing96, spacing1280 }
     }
   }): FlattenSimpleInterpolation => css`
     margin: 0 auto;
     max-width: ${spacing1280};
     padding: ${spacing96} ${spacing48};
     width: 100%;
+
+    @media(max-width: ${breakpoint640}) {
+      padding: ${spacing96} ${spacing24};
+    }
   `};
 `;
 
