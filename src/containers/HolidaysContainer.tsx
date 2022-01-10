@@ -14,21 +14,18 @@ import { Checkbox } from "UI/molecules/Checkbox";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
 
 function HolidaysContainer(): JSX.Element {
-  const { holidaysList, publicHolidays, nonPublicHolidays } = useHolidaysList();
+  const { holidaysList, isGettingHolidaysList, publicHolidays, nonPublicHolidays } = useHolidaysList();
   const { countryList } = useCountryList();
+
   const [isPublicHolidaysChecked, setIsPublicHolidaysChecked] = useState<boolean>(false);
   const [isNonPublicHolidaysChecked, setIsNonPublicHolidaysChecked] = useState<boolean>(false);
 
   const handlePublicHolidaysChange = useCallback((checked) => {
-    const _checked = checked;
-
-    setIsPublicHolidaysChecked(_checked);
+    setIsPublicHolidaysChecked(checked);
   }, []);
 
   const handleNonPublicHolidaysChange = useCallback((checked) => {
-    const _checked = checked;
-
-    setIsNonPublicHolidaysChecked(_checked);
+    setIsNonPublicHolidaysChecked(checked);
   }, []);
 
   const holidaysMatch = useMatch(
@@ -75,7 +72,7 @@ function HolidaysContainer(): JSX.Element {
       <LayoutContainer display="flex" marginTop="spacing36">
         <Checkbox
           checked={isPublicHolidaysChecked}
-          disabled={false}
+          disabled={isGettingHolidaysList}
           id="public-holidays"
           label="Public holidays"
           onChange={handlePublicHolidaysChange}
@@ -83,7 +80,7 @@ function HolidaysContainer(): JSX.Element {
 
         <Checkbox
           checked={isNonPublicHolidaysChecked}
-          disabled={false}
+          disabled={isGettingHolidaysList}
           id="non-public-holidays"
           label="Non public holidays"
           onChange={handleNonPublicHolidaysChange}
