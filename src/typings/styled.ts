@@ -6,11 +6,6 @@ declare module "styled-components" {
       breakpoint640: string;
       breakpoint641: string;
       breakpoint800: string;
-      breakpoint801: string;
-      breakpoint1280: string;
-      breakpoint1281: string;
-      breakpoint1680: string;
-      breakpoint1681: string;
     };
 
     colorPalette: {
@@ -18,6 +13,7 @@ declare module "styled-components" {
       black400: string;
       blue200: string;
       blue400: string;
+      blue600: string;
       gray: string;
       white: string;
     };

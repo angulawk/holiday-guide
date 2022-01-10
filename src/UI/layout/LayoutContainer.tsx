@@ -103,6 +103,7 @@ const LayoutContainer = (
     backgroundColor,
     bottom = "unset",
     children,
+    className,
     customCss,
     display = "block",
     flex = "none",
@@ -131,6 +132,7 @@ const LayoutContainer = (
     alignItems={alignItems}
     backgroundColor={backgroundColor}
     bottom={bottom}
+    className={className}
     customCss={customCss}
     display={display}
     flex={flex}
@@ -167,6 +169,7 @@ LayoutContainer.propTypes = {
     PropTypes.number,
     PropTypes.string
   ]).isRequired,
+  className: PropTypes.string,
   customCss: PropTypes.string,
   display: PropTypes.oneOf(["block", "inline-block", "flex", "inline-flex", "grid"]),
   flex: PropTypes.string,

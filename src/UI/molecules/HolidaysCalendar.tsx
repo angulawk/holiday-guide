@@ -10,8 +10,7 @@ import { Calendar, momentLocalizer } from "react-big-calendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
 import { LayoutContainer } from "UI/layout/LayoutContainer";
-import { CalendarKey } from "UI/molecules/CalendarKey";
-import { Text } from "UI/atoms/Text";
+import { CalendarToolbar } from "UI/molecules/CalendarToolbar";
 
 import { colorPalette } from "styles/variables/colorPalette";
 import { spacing } from "styles/variables/spacing";
@@ -43,7 +42,7 @@ const HolidaysCalendarContainer = styled(Calendar)`
   `};
 `;
 
-function eventStyleGetter(event: any) {
+function eventStyleGetter(event: { isPublic?: boolean }) {
   const isPublic = event?.isPublic;
 
   const style = {
@@ -65,25 +64,18 @@ function eventStyleGetter(event: any) {
 const HolidaysCalendar = ({
   eventsList
 }: IHolidaysCalendarProps): JSX.Element => (
-  <LayoutContainer marginTop="spacing64">
+  <LayoutContainer marginTop="spacing40">
     <HolidaysCalendarContainer
+      components={{
+        toolbar: (toolbar) => (
+          <CalendarToolbar {...toolbar} />
+        )
+      }}
       defaultDate={new Date(2021, 0, 1)}
       eventPropGetter={eventStyleGetter}
       events={eventsList}
       localizer={localizer}
     />
-
-    <Text>Calendar keys</Text>
-    <LayoutContainer display="flex">
-      <CalendarKey
-        calendarKeyText="Non public holidays"
-        color="blue400"
-      />
-      <CalendarKey
-        calendarKeyText="Public holidays"
-        color="black400"
-      />
-    </LayoutContainer>
   </LayoutContainer>
 );
 

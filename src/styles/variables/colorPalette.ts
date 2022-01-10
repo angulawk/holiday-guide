@@ -6,6 +6,7 @@ export const colorPalette = {
   //Blue
   blue200: "#e0f2f1",
   blue400: "#4db6ac",
+  blue600: "#5ba099",
 
   //Gray
   gray: "#e0e0e0",
