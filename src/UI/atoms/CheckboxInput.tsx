@@ -54,14 +54,12 @@ const CheckboxVisible = styled.div<ICheckboxVisibleInputProps>`
 const CheckboxInput = ({
   checked,
   disabled = false,
-  id,
   onChange
 }: ICheckboxInputProps): JSX.Element => (
   <Fragment>
     <CheckboxHidden
       checked={checked}
       disabled={disabled}
-      id={id}
       onChange={onChange}
       type="checkbox"
     />
@@ -76,7 +74,6 @@ const CheckboxInput = ({
 CheckboxInput.propTypes = {
   checked: PropTypes.bool.isRequired,
   disabled: PropTypes.bool,
-  id: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired
 };
 

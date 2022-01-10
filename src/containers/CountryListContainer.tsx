@@ -1,4 +1,6 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo } from "react";
+
+import { useForm } from "react-hook-form";
 
 import { useCountryList } from "hooks/api/useCountryList";
 
@@ -8,9 +10,15 @@ import { PageContainer } from "UI/atoms/PageContainer";
 import { Table } from "UI/organisms/Table";
 import { SearchInput } from "UI/molecules/SearchInput";
 
+const defaultValues = {
+  Search: ""
+};
+
 function CountryListContainer(): JSX.Element {
   const { countryList, isGettingCountryList } = useCountryList() || {};
-  const [searchValue, setSearchValue] = useState<string>("");
+
+  const { control, watch } = useForm({ defaultValues });
+  const searchValue: string = watch().Search; 
 
   const tableData = useMemo(
     () =>
@@ -58,7 +66,7 @@ function CountryListContainer(): JSX.Element {
       </Text>
 
       <SearchInput
-        onChange={(_value: string) => setSearchValue(_value)}
+        control={control}
       />
 
       <Table

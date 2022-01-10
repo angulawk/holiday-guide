@@ -1,7 +1,9 @@
-import React, { ChangeEvent, useCallback } from "react";
+import React from "react";
 
 import PropTypes from "prop-types";
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+
+import { Controller } from "react-hook-form";
 
 import { CheckboxInput } from "UI/atoms/CheckboxInput";
 import { Text } from "UI/atoms/Text";
@@ -33,55 +35,43 @@ const CheckboxContainer = styled.label<TCheckboxContainerProps>`
 `;
 
 const Checkbox = ({
-  checked,
+  control,
   disabled = false,
-  id,
   label,
-  onChange
-}: ICheckboxProps): JSX.Element => {
-  const handleCheckboxInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
-      const _checked = event?.target?.checked;
-
-      if (!disabled && onChange) {
-        onChange(_checked);
-      }
-    },
-    [disabled, onChange]
-  );
-
-  return (
-    <CheckboxContainer
-      disabled={disabled}
+  name
+}: ICheckboxProps): JSX.Element => (
+  <CheckboxContainer
+    disabled={disabled}
+  >
+    <Text
+      ellipsis
+      color={disabled ? "gray" : "black400"}
+      display="inline"
+      fontSize="font16"
+      lineHeight="spacing16"
     >
-      <Text
-        ellipsis
-        color={disabled ? "gray" : "black400"}
-        display="inline"
-        fontSize="font16"
-        lineHeight="spacing16"
-      >
-        {label}
-      </Text>
+      {label}
+    </Text>
 
-      <CheckboxInput
-        checked={checked}
-        disabled={disabled}
-        id={id}
-        onChange={handleCheckboxInputChange}
-      />
-    </CheckboxContainer>
-  );
-};
+    <Controller
+      name={name}
+      control={control}
+      render={({ field: { onChange, value } }) => (
+        <CheckboxInput
+          disabled={disabled}
+          onChange={(event) => onChange(event.target.checked)}
+          checked={value}
+        />
+      )}
+    />
+  </CheckboxContainer>
+);
 
 Checkbox.propTypes = {
-  checked: PropTypes.bool.isRequired,
-  dataCy: PropTypes.string,
-  dataTestId: PropTypes.string,
+  control: PropTypes.object,
   disabled: PropTypes.bool,
-  id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired
+  name: PropTypes.oneOf(["NonPublicHolidays", "PublicHolidays"])
 };
 
 export { Checkbox };

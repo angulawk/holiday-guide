@@ -1,11 +1,15 @@
-import { Dispatch, SetStateAction } from "react";
+import { Control } from "react-hook-form";
+
+export type TFieldValues = {
+  NonPublicHolidays: boolean;
+  PublicHolidays: boolean;
+};
 
 export interface ICheckboxProps {
-  checked: boolean;
+  control: Control<TFieldValues, object>;
   disabled?: boolean;
-  id: string;
   label: string;
-  onChange?: Dispatch<SetStateAction<boolean>> | ((checked: boolean) => void);
+  name: "NonPublicHolidays" | "PublicHolidays";
 }
 
 export type TCheckboxContainerProps = Partial<ICheckboxProps>;

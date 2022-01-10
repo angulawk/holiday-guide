@@ -1,6 +1,8 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useMemo } from "react";
 
 import { useMatch } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
@@ -13,20 +15,23 @@ import { HolidaysCalendar } from "UI/molecules/HolidaysCalendar";
 import { Checkbox } from "UI/molecules/Checkbox";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
 
+const defaultValues = {
+  NonPublicHolidays: false,
+  PublicHolidays: false
+};
+
 function HolidaysContainer(): JSX.Element {
-  const { holidaysList, isGettingHolidaysList, publicHolidays, nonPublicHolidays } = useHolidaysList();
+  const {
+    holidaysList,
+    isGettingHolidaysList,
+    publicHolidays,
+    nonPublicHolidays
+  } = useHolidaysList();
   const { countryList } = useCountryList();
 
-  const [isPublicHolidaysChecked, setIsPublicHolidaysChecked] = useState<boolean>(false);
-  const [isNonPublicHolidaysChecked, setIsNonPublicHolidaysChecked] = useState<boolean>(false);
-
-  const handlePublicHolidaysChange = useCallback((checked) => {
-    setIsPublicHolidaysChecked(checked);
-  }, []);
-
-  const handleNonPublicHolidaysChange = useCallback((checked) => {
-    setIsNonPublicHolidaysChecked(checked);
-  }, []);
+  const { control, watch } = useForm({ defaultValues });
+  const isPublicHolidaysChecked = watch()?.PublicHolidays;
+  const isNonPublicHolidaysChecked = watch()?.NonPublicHolidays;
 
   const holidaysMatch = useMatch(
     "/holidays/:alpha2Code"
@@ -71,19 +76,16 @@ function HolidaysContainer(): JSX.Element {
 
       <LayoutContainer display="flex" marginTop="spacing36">
         <Checkbox
-          checked={isPublicHolidaysChecked}
+          control={control}
           disabled={isGettingHolidaysList}
-          id="public-holidays"
           label="Public holidays"
-          onChange={handlePublicHolidaysChange}
+          name="PublicHolidays"
         />
-
         <Checkbox
-          checked={isNonPublicHolidaysChecked}
+          control={control}
           disabled={isGettingHolidaysList}
-          id="non-public-holidays"
           label="Non public holidays"
-          onChange={handleNonPublicHolidaysChange}
+          name="NonPublicHolidays"
         />
       </LayoutContainer>
 
