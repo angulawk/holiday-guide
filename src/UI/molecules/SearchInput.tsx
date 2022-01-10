@@ -1,4 +1,8 @@
-import React, { useState, useCallback, ChangeEvent } from "react";
+import React from "react";
+
+import PropTypes from "prop-types";
+
+import { Controller } from "react-hook-form";
 
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
@@ -18,26 +22,24 @@ const Input = styled.input`
   `};
 `;
 
-function SearchInput({
-  onChange
-}: ISearchInputProps): JSX.Element {
-  const [internalValue, setInternalValue] = useState<string>("");
+const SearchInput = ({
+  control
+}: ISearchInputProps): JSX.Element => (
+  <Controller
+    control={control}
+    name="Search"
+    render={({ field }) => (
+      <Input
+        {...field}
+        type="search"
+        placeholder="Search Country"
+      />
+    )}
+  />
+);
 
-  const handleSearchInputChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    const _value: string = event?.target?.value;
-
-    setInternalValue(_value);
-    onChange?.(_value);
-  }, [onChange]);
-
-  return (
-    <Input 
-      type="search" 
-      placeholder="Search Country" 
-      onChange={handleSearchInputChange}
-      value={internalValue}
-    />
-  );
-}
+SearchInput.propTypes = {
+  control: PropTypes.object
+};
 
 export { SearchInput };

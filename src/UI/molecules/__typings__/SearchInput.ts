@@ -1,5 +1,8 @@
-import { Dispatch, SetStateAction } from "react";
+import { Control } from "react-hook-form";
 
+type TFieldValues = {
+  Search: string;
+};
 export interface ISearchInputProps {
-  onChange?: Dispatch<SetStateAction<string>> | ((value: string) => void);
+  control: Control<TFieldValues, object>;
 }

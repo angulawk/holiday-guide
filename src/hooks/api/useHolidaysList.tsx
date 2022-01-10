@@ -1,15 +1,14 @@
-import React, { useCallback, useContext, useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect, useState, useMemo } from "react";
 
 import { useMatch } from "react-router-dom";
 
 import { getHolidaysList } from "api/getHolidaysList";
 import { GlobalContext } from "providers/GlobalProvider";
 
-import { IUseHolidaysList } from "hooks/api/__typings__/useHolidaysList";
 import { IGlobalContext } from "providers/__typings__/GlobalProvider";
 import { IHolidaysList } from "api/__typings__/getHolidaysList";
 
-function useHolidaysList(): IUseHolidaysList {
+function useHolidaysList() {
   const { updateAppState } = useContext<IGlobalContext>(GlobalContext);
 
   const [holidaysList, setHolidaysList] = useState<IHolidaysList["holidays"]>([]);
@@ -38,8 +37,16 @@ function useHolidaysList(): IUseHolidaysList {
 
       setIsGettingHolidaysList(false);
     }
-  }, []);
+  }, [alpha2Code]);
 
+  const publicHolidays = useMemo(() => {
+    return holidaysList?.filter(({ public: isPublic }) => isPublic );
+  }, [holidaysList]);
+
+  const nonPublicHolidays = useMemo(() => {
+    return holidaysList?.filter(({ public: isPublic }) => !isPublic );
+  }, [holidaysList]);
+ 
   useEffect(() => {
     fetchHolidaysList();
   }, [fetchHolidaysList]);
@@ -50,7 +57,9 @@ function useHolidaysList(): IUseHolidaysList {
 
   return {
     holidaysList,
-    isGettingHolidaysList
+    isGettingHolidaysList,
+    nonPublicHolidays,
+    publicHolidays
   };
 }
 
