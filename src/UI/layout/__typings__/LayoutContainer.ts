@@ -11,7 +11,6 @@ export interface ILayoutContainerProps {
   backgroundColor?: TColorPalette;
   bottom?: TSpacing | "unset" | "50%" | "100%";
   children: JSX.Element | JSX.Element[] | React.ReactNode;
-  className?: string;
   customCss?: string;
   display?: "block" | "inline-block" | "flex" | "inline-flex" | "grid";
   flex?: string;
