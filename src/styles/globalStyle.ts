@@ -64,7 +64,7 @@ export const globalStyle = `
 
   body {
     background-color: ${colorPalette.white};
-    color: ${colorPalette.black500};
+    color: ${colorPalette.black200};
     line-height: 1;
     min-height: 100vh;
     overflow-x: hidden;
@@ -74,7 +74,7 @@ export const globalStyle = `
 
   ::selection { 
     background: ${colorPalette.blue200}; 
-    color: ${colorPalette.black500}; 
+    color: ${colorPalette.black200}; 
   }
 
   h1,

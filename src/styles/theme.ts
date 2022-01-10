@@ -1,5 +1,6 @@
 import { DefaultTheme } from "styled-components";
 
+import { breakpoints } from "styles/variables/breakpoints";
 import { colorPalette } from "styles/variables/colorPalette";
 import { easing } from "styles/variables/easing";
 import { fontFamilies } from "styles/variables/fontFamilies";
@@ -10,6 +11,7 @@ import { transitionTimes } from "styles/variables/transitionTimes";
 import { zIndex } from "styles/variables/zIndex";
 
 const theme: DefaultTheme = {
+  breakpoints,
   colorPalette,
   easing,
   fontFamilies,

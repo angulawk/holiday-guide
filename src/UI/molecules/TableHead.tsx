@@ -14,10 +14,12 @@ import {
 const TableHeadContainer = styled.thead`
   ${({
     theme: {
+      colorPalette: { blue400 },
       spacing,
       zIndex: { layer2 }
     }
   }): FlattenSimpleInterpolation => css`
+    background-color: ${blue400};
     position: sticky;
     top: ${spacing.spacing0};
     z-index: ${layer2};
