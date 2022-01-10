@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 import { useMatch } from "react-router-dom";
 
@@ -10,10 +10,26 @@ import { useHolidaysList } from "hooks/api/useHolidaysList";
 import { PageContainer } from "UI/atoms/PageContainer";
 import { HolidaysDetails } from "UI/molecules/HolidaysDetails";
 import { HolidaysCalendar } from "UI/molecules/HolidaysCalendar";
+import { Checkbox } from "UI/molecules/Checkbox";
+import { LayoutContainer } from "UI/layout/LayoutContainer";
 
 function HolidaysContainer(): JSX.Element {
-  const { holidaysList } = useHolidaysList();
+  const { holidaysList, publicHolidays, nonPublicHolidays } = useHolidaysList();
   const { countryList } = useCountryList();
+  const [isPublicHolidaysChecked, setIsPublicHolidaysChecked] = useState<boolean>(false);
+  const [isNonPublicHolidaysChecked, setIsNonPublicHolidaysChecked] = useState<boolean>(false);
+
+  const handlePublicHolidaysChange = useCallback((checked) => {
+    const _checked = checked;
+
+    setIsPublicHolidaysChecked(_checked);
+  }, []);
+
+  const handleNonPublicHolidaysChange = useCallback((checked) => {
+    const _checked = checked;
+
+    setIsNonPublicHolidaysChecked(_checked);
+  }, []);
 
   const holidaysMatch = useMatch(
     "/holidays/:alpha2Code"
@@ -24,20 +40,29 @@ function HolidaysContainer(): JSX.Element {
       alpha2Code?.toLowerCase() === holidaysMatch?.params?.alpha2Code
   );
 
-  const eventsList = useMemo(
-    () =>
-      holidaysList?.map(({ 
-        end,
-        name,
-        public: isPublic,
-        start
-      }) => ({
-        end: new Date(end),
-        isPublic,
-        title: name,
-        start: new Date(start)
-      })), [holidaysList]
-  );
+  const eventsList = useMemo(() => {
+    let _holidays;
+
+    if(isPublicHolidaysChecked && !isNonPublicHolidaysChecked) {
+      _holidays = publicHolidays;
+    } else if(!isPublicHolidaysChecked && isNonPublicHolidaysChecked) {
+      _holidays = nonPublicHolidays;
+    } else {
+      _holidays = holidaysList;
+    }
+
+    return _holidays.map(({ 
+      end,
+      name,
+      public: isPublic,
+      start
+    }) => ({
+      end: new Date(end),
+      isPublic,
+      title: name,
+      start: new Date(start)
+    }));
+  }, [holidaysList, isNonPublicHolidaysChecked, isPublicHolidaysChecked, nonPublicHolidays, publicHolidays]);
 
   return (
     <PageContainer>
@@ -46,6 +71,24 @@ function HolidaysContainer(): JSX.Element {
         countryName={holidays?.name || ""}
         src={`https://flagcdn.com/32x24/${holidays?.alpha2Code.toLowerCase()}.png`}
       />
+
+      <LayoutContainer display="flex" marginTop="spacing20">
+        <Checkbox
+          checked={isPublicHolidaysChecked}
+          disabled={false}
+          id="public-holidays"
+          label="Public holidays"
+          onChange={handlePublicHolidaysChange}
+        />
+
+        <Checkbox
+          checked={isNonPublicHolidaysChecked}
+          disabled={false}
+          id="non-public-holidays"
+          label="Non public holidays"
+          onChange={handleNonPublicHolidaysChange}
+        />
+      </LayoutContainer>
 
       <HolidaysCalendar
         eventsList={eventsList}

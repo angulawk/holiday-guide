@@ -14,6 +14,7 @@ export const spacing = {
   spacing48: "4.8rem",
   spacing56: "5.6rem",
   spacing64: "6.4rem",
+  spacing80: "8rem",
   spacing96: "9.6rem",
   spacing128: "12.8rem",
   spacing400: "40rem",
