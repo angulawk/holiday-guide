@@ -14,12 +14,13 @@ const CheckboxContainer = styled.label<TCheckboxContainerProps>`
   ${({
     disabled,
     theme: {
-      spacing: { spacing0, spacing16, spacing24 }
+      spacing: { spacing0, spacing12, spacing16, spacing24 }
     }
   }): FlattenSimpleInterpolation => css`
     align-items: center;
     cursor: ${disabled ? "not-allowed" : "pointer"};
     display: flex;
+    margin-bottom: ${spacing12};
     margin-right: ${spacing16};
     padding-left: ${spacing24};
     position: relative;

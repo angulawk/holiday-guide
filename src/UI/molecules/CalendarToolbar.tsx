@@ -2,33 +2,51 @@ import React, { useCallback } from "react";
 
 import moment from "moment";
 
-import styled from "styled-components";
+import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 import { ToolbarProps } from "react-big-calendar";
-
-import { colorPalette } from "styles/variables/colorPalette";
-import { easing } from "styles/variables/easing";
-import { fontSizes } from "styles/variables/fontSizes";
-import { spacing } from "styles/variables/spacing";
-import { transitionTimes } from "styles/variables/transitionTimes";
 
 import { Text } from "UI/atoms/Text";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
 import { breakpoints } from "styles/variables/breakpoints";
 
 const CalendarToolbarContainer = styled.div``;
-const Label = styled.label``;
-const Button = styled.button`
-  background-color: ${colorPalette.blue400};
-  color: ${colorPalette.white};
-  cursor: pointer;
-  font-size: ${fontSizes.font16};
-  padding: ${spacing.spacing4} ${spacing.spacing8};
 
-  &:hover {
-    background-color: ${colorPalette.blue600};
-    transition: all ${transitionTimes.fast} ${easing.easeInOut};
-  }
+const Label = styled.label`
+  ${({
+    theme: {
+      breakpoints: { breakpoint640 },
+      spacing: { spacing16 }
+    }
+  }): FlattenSimpleInterpolation => css`
+    @media(max-width: ${breakpoint640}) {
+      margin-bottom: ${spacing16};
+    }
+  `};
+`;
+
+const Button = styled.button`
+  ${({
+    theme: {
+      colorPalette: { blue400, blue600, white },
+      easing: { easeInOut },
+      fontSizes: { font16 },
+      spacing: { spacing4, spacing8 },
+      transitionTimes: { fast }
+
+    }
+  }): FlattenSimpleInterpolation => css`
+    background-color: ${blue400};
+    color: ${white};
+    cursor: pointer;
+    font-size: ${font16};
+    padding: ${spacing4} ${spacing8};
+
+    &:hover {
+      background-color: ${blue600};
+      transition: all ${fast} ${easeInOut};
+    }
+  `};
 `;
 
 const calendarToolbarCustomCss = `

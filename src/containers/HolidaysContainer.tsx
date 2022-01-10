@@ -72,7 +72,7 @@ function HolidaysContainer(): JSX.Element {
         src={`https://flagcdn.com/32x24/${holidays?.alpha2Code.toLowerCase()}.png`}
       />
 
-      <LayoutContainer display="flex" marginTop="spacing20">
+      <LayoutContainer display="flex" marginTop="spacing36">
         <Checkbox
           checked={isPublicHolidaysChecked}
           disabled={false}

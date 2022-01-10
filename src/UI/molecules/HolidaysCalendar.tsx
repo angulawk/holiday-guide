@@ -64,7 +64,7 @@ function eventStyleGetter(event: { isPublic?: boolean }) {
 const HolidaysCalendar = ({
   eventsList
 }: IHolidaysCalendarProps): JSX.Element => (
-  <LayoutContainer marginTop="spacing24">
+  <LayoutContainer marginTop="spacing20">
     <HolidaysCalendarContainer
       components={{
         toolbar: (toolbar) => (
