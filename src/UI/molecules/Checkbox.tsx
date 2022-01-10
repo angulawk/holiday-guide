@@ -28,7 +28,7 @@ const CheckboxContainer = styled.label<TCheckboxContainerProps>`
     position: relative;
     user-select: none;
 
-    :last-child {
+    &:last-child {
       margin-right: ${spacing0};
     }
   `};
