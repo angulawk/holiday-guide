@@ -20,14 +20,14 @@ const CheckboxVisible = styled.div<ICheckboxVisibleInputProps>`
     checked,
     disabled,
     theme: {
-      colorPalette: { blue400, gray },
+      colorPalette: { green300, gray100 },
       easing: { easeInOut },
       spacing: { spacing8, spacing16 },
       transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
-    border: thin solid ${disabled ? gray : blue400};
-    box-shadow: ${checked ? `0px 0px 2px ${blue400}` : "none"};
+    border: thin solid ${disabled ? gray100 : green300};
+    box-shadow: ${checked ? `0px 0px 2px ${green300}` : "none"};
     height: ${spacing16};
     left: 0;
     position: absolute;
@@ -36,7 +36,7 @@ const CheckboxVisible = styled.div<ICheckboxVisibleInputProps>`
     width: ${spacing16};
 
     &::after {
-      background-color: ${disabled ? gray : blue400};
+      background-color: ${disabled ? gray100 : green300};
       content: "";
       display: block;
       height: ${spacing8};

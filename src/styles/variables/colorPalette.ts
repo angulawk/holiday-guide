@@ -1,15 +1,17 @@
 export const colorPalette = {
   // Black
-  black200: "#444444",
-  black400: "#000000",
+  black100: "#444444",
+  black200: "#000000",
 
-  //Blue
-  blue200: "#e0f2f1",
-  blue400: "#4db6ac",
-  blue600: "#5ba099",
+  //gray100
+  gray100: "#e0e0e0",
+  gray200: "#acacac",
 
-  //Gray
-  gray: "#e0e0e0",
+  //Green
+  green100: "#e0f2f1",
+  green200: "#5ad3c7",
+  green300: "#4db6ac",
+  green400: "#5ba099",
 
   //White
   white: "#FFFFFF"

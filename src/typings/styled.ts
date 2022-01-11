@@ -9,12 +9,14 @@ declare module "styled-components" {
     };
 
     colorPalette: {
+      black100: string;
       black200: string;
-      black400: string;
-      blue200: string;
-      blue400: string;
-      blue600: string;
-      gray: string;
+      green100: string;
+      green200: string;
+      green300: string;
+      green400: string;
+      gray100: string;
+      gray200: string;
       white: string;
     };
 

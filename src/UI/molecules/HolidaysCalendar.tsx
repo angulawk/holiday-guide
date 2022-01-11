@@ -46,7 +46,7 @@ function eventStyleGetter(event: { isPublic?: boolean }) {
   const isPublic = event?.isPublic;
 
   const style = {
-    backgroundColor: isPublic ? colorPalette.black200 : colorPalette.blue400,
+    backgroundColor: isPublic ? colorPalette.black100 : colorPalette.green300,
     borderRadius: "0px",
     fontSize: fontSizes.font14,
     height: spacing.spacing16,

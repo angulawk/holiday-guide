@@ -6,9 +6,11 @@ import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
 import { ToolbarProps } from "react-big-calendar";
 
-import { Text } from "UI/atoms/Text";
-import { LayoutContainer } from "UI/layout/LayoutContainer";
 import { breakpoints } from "styles/variables/breakpoints";
+
+import { Text } from "UI/atoms/Text";
+import { Button } from "UI/molecules/Button";
+import { LayoutContainer } from "UI/layout/LayoutContainer";
 
 const CalendarToolbarContainer = styled.div``;
 
@@ -21,30 +23,6 @@ const Label = styled.label`
   }): FlattenSimpleInterpolation => css`
     @media(max-width: ${breakpoint640}) {
       margin-bottom: ${spacing16};
-    }
-  `};
-`;
-
-const Button = styled.button`
-  ${({
-    theme: {
-      colorPalette: { blue400, blue600, white },
-      easing: { easeInOut },
-      fontSizes: { font16 },
-      spacing: { spacing4, spacing8 },
-      transitionTimes: { fast }
-
-    }
-  }): FlattenSimpleInterpolation => css`
-    background-color: ${blue400};
-    color: ${white};
-    cursor: pointer;
-    font-size: ${font16};
-    padding: ${spacing4} ${spacing8};
-
-    &:hover {
-      background-color: ${blue600};
-      transition: all ${fast} ${easeInOut};
     }
   `};
 `;
@@ -112,9 +90,18 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         <Label className="label-date">{renderLabel()}</Label>
 
         <LayoutContainer>
-          <Button onClick={goToMonthView}>Month</Button>
-          <Button onClick={goToWeekView}>Week</Button>
-          <Button onClick={goToDayView}>Day</Button>
+          <Button
+            buttonText="Month"
+            onClick={goToMonthView}
+          />
+          <Button
+            buttonText="Week"
+            onClick={goToWeekView}
+          />
+          <Button
+            buttonText="Day"
+            onClick={goToDayView}
+          />
         </LayoutContainer>
       </LayoutContainer>
 
@@ -123,9 +110,18 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         marginBottom="spacing16"
         marginTop="spacing16"
       >
-        <Button onClick={goToBack}>&#8249; Prev</Button>
-        <Button onClick={goToCurrent}>Today</Button>
-        <Button onClick={goToNext}>Next &#8250;</Button>
+        <Button
+          buttonText={"Prev"}
+          onClick={goToBack}
+        />
+        <Button
+          buttonText={"Today"}
+          onClick={goToCurrent}
+        />
+        <Button
+          buttonText={"Next"}
+          onClick={goToNext}
+        />
       </LayoutContainer>
     </CalendarToolbarContainer >
   );

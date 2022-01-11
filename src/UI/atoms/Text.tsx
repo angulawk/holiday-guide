@@ -67,7 +67,7 @@ const Text = (
   {
     as = "p",
     children,
-    color = "black200",
+    color = "black100",
     display = "block",
     ellipsis = false,
     fontSize = "font16",

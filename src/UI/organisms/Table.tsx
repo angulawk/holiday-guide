@@ -16,12 +16,12 @@ import {
 const TableContainer = styled.table`
   ${({
     theme: {
-      colorPalette: { blue400 }
+      colorPalette: { green300 }
     }
   }): FlattenSimpleInterpolation => css`
-    border-bottom: 1px solid ${blue400};
-    border-left: 1px solid ${blue400};
-    border-right: 1px solid ${blue400};
+    border-bottom: 1px solid ${green300};
+    border-left: 1px solid ${green300};
+    border-right: 1px solid ${green300};
     border-spacing: 0;
     width: 100%;
   `};

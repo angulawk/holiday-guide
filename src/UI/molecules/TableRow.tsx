@@ -1,12 +1,15 @@
 import React from "react";
 
 import PropTypes from "prop-types";
-import ContentLoader from "react-content-loader";
+
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
+
+import ContentLoader from "react-content-loader";
 
 import { colorPalette } from "styles/variables/colorPalette";
 
 import { TableDataCell } from "UI/atoms/TableDataCell";
+
 import { ITableRowProps } from "UI/molecules/__typings__/TableRow";
 
 const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
@@ -14,24 +17,24 @@ const TableRowContainer = styled.tr<Partial<ITableRowProps>>`
     isLoading,
     onClick,
     theme: {
-      colorPalette: { blue200, blue400, black200, white },
+      colorPalette: { green100, green300, black100, white },
       easing: { easeInOut },
       spacing: {  spacing56 },
       transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
-    color: ${black200};
+    color: ${black100};
     ${onClick && "cursor: pointer;"}
     height: ${spacing56};
     ${isLoading && "width: 100%;"}
 
     &:nth-child(even) {
-      background-color: ${blue200};
+      background-color: ${green100};
     }
 
     &:hover {
       color: ${white};
-      background-color: ${blue400};
+      background-color: ${green300};
       transition: all ${fast} ${easeInOut};
     }
   `};
@@ -75,8 +78,8 @@ function renderTableRowContent({
         isLoading={isLoading}
       >
         <ContentLoader
-          backgroundColor={colorPalette.blue200}
-          foregroundColor={colorPalette.blue400}
+          backgroundColor={colorPalette.green100}
+          foregroundColor={colorPalette.green300}
           foregroundOpacity={0.75}
           gradientRatio={0.5}
           height={44}
