@@ -33,6 +33,7 @@ const SearchInput = ({
         {...field}
         type="search"
         placeholder="Search Country"
+        value={field?.value || ""}
       />
     )}
   />

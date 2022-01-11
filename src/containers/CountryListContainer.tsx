@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import { useForm } from "react-hook-form";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { useCountryList } from "hooks/api/useCountryList";
 
@@ -10,26 +11,36 @@ import { PageContainer } from "UI/atoms/PageContainer";
 import { Table } from "UI/organisms/Table";
 import { SearchInput } from "UI/molecules/SearchInput";
 
-const defaultValues = {
-  Search: ""
-};
-
 function CountryListContainer(): JSX.Element {
   const { countryList, isGettingCountryList } = useCountryList() || {};
 
-  const { control, watch } = useForm({ defaultValues });
-  const searchValue: string = watch().Search; 
+  const search = useLocation().search;
+  const navigate = useNavigate();
+
+  const searchQueryParamValue = new URLSearchParams(search).get("search");
+
+  const { control, watch } = useForm({ defaultValues: { Search: searchQueryParamValue } });
+  const searchValue = watch("Search") as string;
+  
+  useEffect(() => {
+    if(searchValue) {
+      navigate(`/?search=${searchValue}`);
+    }
+  }, [navigate, searchValue]);
 
   const tableData = useMemo(
-    () =>
-      countryList?.filter(({ name }) => name.toLowerCase().includes(searchValue.toLowerCase())).map(({ name, alpha2Code, alpha3Code }) => ({
+    () => {
+      const _countryList = searchValue ? countryList?.filter(({ name }) => name?.toLowerCase().includes(searchValue?.toLowerCase())) : countryList;
+
+      return _countryList.map(({ name, alpha2Code, alpha3Code }) => ({
         alpha2Code,
         alpha3Code,
         name,
         flag: (
           <Image alt={`${name} flag`} src={`https://flagcdn.com/32x24/${alpha2Code.toLowerCase()}.png`} />
         )
-      })), [countryList, searchValue]
+      }));
+    }, [countryList, searchValue]
   );
 
   const columns = useMemo(
