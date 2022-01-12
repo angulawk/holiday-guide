@@ -68,7 +68,7 @@ const HolidaysCalendar = ({
   <LayoutContainer marginTop="spacing20">
     <HolidaysCalendarContainer
       components={{
-        toolbar: (toolbar) =>  (
+        toolbar: (toolbar) => (
           <CalendarToolbar {...toolbar} isLoading={isLoading} />
         )
       }}
@@ -82,7 +82,7 @@ const HolidaysCalendar = ({
 
 HolidaysCalendar.propTypes = {
   eventsList: PropTypes.arrayOf(PropTypes.object),
-  isLoading: PropTypes.bool
+  isLoading: PropTypes.bool.isRequired
 };
 
 export { HolidaysCalendar };

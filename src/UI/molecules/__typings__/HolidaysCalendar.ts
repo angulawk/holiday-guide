@@ -7,5 +7,5 @@ interface IHolidays {
 
 export interface IHolidaysCalendarProps {
   eventsList: IHolidays[];
-  isLoading?: boolean;
+  isLoading: boolean;
 }
