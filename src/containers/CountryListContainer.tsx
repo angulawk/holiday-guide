@@ -25,6 +25,8 @@ function CountryListContainer(): JSX.Element {
   useEffect(() => {
     if(searchValue) {
       navigate(`/?search=${searchValue}`);
+    } else {
+      navigate("/");
     }
   }, [navigate, searchValue]);
 

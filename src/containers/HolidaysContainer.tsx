@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
 
@@ -10,10 +10,8 @@ import { useCountryList } from "hooks/api/useCountryList";
 import { useHolidaysList } from "hooks/api/useHolidaysList";
 
 import { PageContainer } from "UI/atoms/PageContainer";
-import { HolidaysDetails } from "UI/molecules/HolidaysDetails";
 import { HolidaysCalendar } from "UI/molecules/HolidaysCalendar";
-import { Checkbox } from "UI/molecules/Checkbox";
-import { LayoutContainer } from "UI/layout/LayoutContainer";
+import { HolidaysHeader } from "UI/organisms/HolidaysHeader";
 
 const defaultValues = {
   NonPublicHolidays: false,
@@ -27,7 +25,9 @@ function HolidaysContainer(): JSX.Element {
     publicHolidays,
     nonPublicHolidays
   } = useHolidaysList();
-  const { countryList } = useCountryList();
+  const navigate = useNavigate();
+
+  const { countryList, isGettingCountryList } = useCountryList();
 
   const { control, watch } = useForm({ defaultValues });
   const isPublicHolidaysChecked = watch()?.PublicHolidays;
@@ -68,29 +68,19 @@ function HolidaysContainer(): JSX.Element {
 
   return (
     <PageContainer>
-      <HolidaysDetails
+      <HolidaysHeader
         alt={`${holidays?.name} flag`}
+        control={control}
         countryName={holidays?.name || ""}
-        src={`https://flagcdn.com/32x24/${holidays?.alpha2Code.toLowerCase()}.png`}
+        imageSrc={!isGettingCountryList ? `https://flagcdn.com/32x24/${holidays?.alpha2Code.toLowerCase()}.png` : ""}
+        isCheckboxLoading={isGettingHolidaysList}
+        isLoading={isGettingCountryList}
+        onClick={() => navigate("/")}
       />
-
-      <LayoutContainer display="flex" marginTop="spacing36">
-        <Checkbox
-          control={control}
-          disabled={isGettingHolidaysList}
-          label="Public holidays"
-          name="PublicHolidays"
-        />
-        <Checkbox
-          control={control}
-          disabled={isGettingHolidaysList}
-          label="Non public holidays"
-          name="NonPublicHolidays"
-        />
-      </LayoutContainer>
 
       <HolidaysCalendar
         eventsList={eventsList}
+        isLoading={isGettingHolidaysList}
       />
     </PageContainer>      
   );

@@ -4,11 +4,13 @@ import moment from "moment";
 
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
-import { ToolbarProps } from "react-big-calendar";
+import { breakpoints } from "styles/variables/breakpoints";
 
 import { Text } from "UI/atoms/Text";
+import { Button } from "UI/molecules/Button";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
-import { breakpoints } from "styles/variables/breakpoints";
+
+import { IToolbarProps } from "UI/molecules/__typings__/CalendarToolbar";
 
 const CalendarToolbarContainer = styled.div``;
 
@@ -25,30 +27,6 @@ const Label = styled.label`
   `};
 `;
 
-const Button = styled.button`
-  ${({
-    theme: {
-      colorPalette: { blue400, blue600, white },
-      easing: { easeInOut },
-      fontSizes: { font16 },
-      spacing: { spacing4, spacing8 },
-      transitionTimes: { fast }
-
-    }
-  }): FlattenSimpleInterpolation => css`
-    background-color: ${blue400};
-    color: ${white};
-    cursor: pointer;
-    font-size: ${font16};
-    padding: ${spacing4} ${spacing8};
-
-    &:hover {
-      background-color: ${blue600};
-      transition: all ${fast} ${easeInOut};
-    }
-  `};
-`;
-
 const calendarToolbarCustomCss = `
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -59,8 +37,9 @@ const calendarToolbarCustomCss = `
   }
 `;
 
-const CalendarToolbar: React.FC<ToolbarProps> = ({
+const CalendarToolbar: React.FC<IToolbarProps> = ({
   date,
+  isLoading,
   onNavigate,
   onView
 }) => {
@@ -112,9 +91,21 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         <Label className="label-date">{renderLabel()}</Label>
 
         <LayoutContainer>
-          <Button onClick={goToMonthView}>Month</Button>
-          <Button onClick={goToWeekView}>Week</Button>
-          <Button onClick={goToDayView}>Day</Button>
+          <Button
+            buttonText="Month"
+            isDisabled={isLoading}
+            onClick={goToMonthView}
+          />
+          <Button
+            buttonText="Week"
+            isDisabled={isLoading}
+            onClick={goToWeekView}
+          />
+          <Button
+            buttonText="Day"
+            isDisabled={isLoading}
+            onClick={goToDayView}
+          />
         </LayoutContainer>
       </LayoutContainer>
 
@@ -123,9 +114,21 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         marginBottom="spacing16"
         marginTop="spacing16"
       >
-        <Button onClick={goToBack}>&#8249; Prev</Button>
-        <Button onClick={goToCurrent}>Today</Button>
-        <Button onClick={goToNext}>Next &#8250;</Button>
+        <Button
+          buttonText="Prev"
+          isDisabled={isLoading}
+          onClick={goToBack}
+        />
+        <Button
+          buttonText="Today"
+          isDisabled={isLoading}
+          onClick={goToCurrent}
+        />
+        <Button
+          buttonText="Next"
+          isDisabled={isLoading}
+          onClick={goToNext}
+        />
       </LayoutContainer>
     </CalendarToolbarContainer >
   );

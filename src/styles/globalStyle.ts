@@ -44,7 +44,7 @@ export const globalStyle = `
   *::after {
     box-sizing: border-box;
     outline: 0;
-    scrollbar-color: ${colorPalette.blue400} transparent;
+    scrollbar-color: ${colorPalette.green300} transparent;
     scrollbar-width: thin;
   }
 
@@ -57,14 +57,14 @@ export const globalStyle = `
   }
 
   ::-webkit-scrollbar-thumb {
-    background-color: ${colorPalette.blue400};
+    background-color: ${colorPalette.green300};
     border-radius: ${spacing.spacing8};
     border: none;
   }
 
   body {
     background-color: ${colorPalette.white};
-    color: ${colorPalette.black200};
+    color: ${colorPalette.black100};
     line-height: 1;
     min-height: 100vh;
     overflow-x: hidden;
@@ -73,8 +73,8 @@ export const globalStyle = `
   }
 
   ::selection { 
-    background: ${colorPalette.blue200}; 
-    color: ${colorPalette.black200}; 
+    background: ${colorPalette.green100}; 
+    color: ${colorPalette.black100}; 
   }
 
   h1,

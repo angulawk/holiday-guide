@@ -45,7 +45,7 @@ const Checkbox = ({
   >
     <Text
       ellipsis
-      color={disabled ? "gray" : "black400"}
+      color={disabled ? "gray100" : "black200"}
       display="inline"
       fontSize="font16"
       lineHeight="spacing16"
