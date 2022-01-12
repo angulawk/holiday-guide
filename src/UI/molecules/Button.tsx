@@ -31,7 +31,7 @@ const ButtonContainer = styled.button<IButtonContainerProps>`
       colorPalette,
       easing: { easeInOut },
       fontSizes: { font16 },
-      spacing: { spacing8, spacing12, spacing40 },
+      spacing: { spacing4, spacing8, spacing12, spacing40 },
       transitionTimes: { fast }
     }
   }): FlattenSimpleInterpolation => css`
@@ -42,7 +42,8 @@ const ButtonContainer = styled.button<IButtonContainerProps>`
     border: 1px solid;
     border-color: ${borderColor &&
       borderColor in colorPalette &&
-      colorPalette[borderColor]};  
+      colorPalette[borderColor]};
+    border-radius: ${spacing4}; 
     color: ${colorPalette.white};
     cursor: pointer;
     font-size: ${font16};

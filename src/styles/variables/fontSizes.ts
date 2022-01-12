@@ -4,6 +4,7 @@ export const fontSizes = {
   font14: "1.4rem",
   font16: "1.6rem",
   font20: "2rem",
+  font24: "2.4rem",
   font28: "2.8rem",
   font32: "3.2rem",
   font36: "3.6rem"

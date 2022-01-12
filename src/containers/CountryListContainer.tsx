@@ -10,6 +10,7 @@ import { Image } from "UI/atoms/Image";
 import { PageContainer } from "UI/atoms/PageContainer";
 import { Table } from "UI/organisms/Table";
 import { SearchInput } from "UI/molecules/SearchInput";
+import { LayoutContainer } from "UI/layout/LayoutContainer";
 
 function CountryListContainer(): JSX.Element {
   const { countryList, isGettingCountryList } = useCountryList() || {};
@@ -70,17 +71,24 @@ function CountryListContainer(): JSX.Element {
     <PageContainer>
       <Text
         as="h2"
-        fontSize="font20"
+        fontSize="font24"
         fontWeight="light"
         paddingBottom="spacing24"
-        paddingTop="spacing24"
       >
         Countries List
       </Text>
 
-      <SearchInput
-        control={control}
-      />
+      <LayoutContainer
+        backgroundColor="white"
+        position="sticky"
+        left="spacing48"
+        top="spacing0"
+        zIndex="layer9"
+      >
+        <SearchInput
+          control={control}
+        />
+      </LayoutContainer>
 
       <Table
         columns={columns}

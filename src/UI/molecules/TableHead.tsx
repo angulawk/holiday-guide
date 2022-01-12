@@ -21,7 +21,7 @@ const TableHeadContainer = styled.thead`
   }): FlattenSimpleInterpolation => css`
     background-color: ${green300};
     position: sticky;
-    top: ${spacing.spacing0};
+    top: ${spacing.spacing40};
     z-index: ${layer2};
   `};
 `;
