@@ -13,12 +13,13 @@ const Input = styled.input`
     theme: {
       colorPalette: { green300 },
       fontSizes: { font16 },
-      spacing: { spacing24 }
+      spacing: { spacing12 }
     }
   }): FlattenSimpleInterpolation => css`
     border-bottom: 1px solid ${green300};
     font-size: ${font16};
-    margin-bottom: ${spacing24};
+    margin-bottom: ${spacing12};
+    margin-top: ${spacing12};
   `};
 `;
 

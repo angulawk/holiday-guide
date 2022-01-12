@@ -9,16 +9,16 @@ const PageContainerWrapper = styled.div`
   ${({
     theme: {
       breakpoints: { breakpoint640 },
-      spacing: { spacing24, spacing48, spacing80, spacing1280 }
+      spacing: { spacing24, spacing48, spacing1280 }
     }
   }): FlattenSimpleInterpolation => css`
     margin: 0 auto;
     max-width: ${spacing1280};
-    padding: ${spacing80} ${spacing48};
+    padding: ${spacing24} ${spacing48};
     width: 100%;
 
     @media(max-width: ${breakpoint640}) {
-      padding: ${spacing80} ${spacing24};
+      padding: ${spacing24} ${spacing24};
     }
   `};
 `;
