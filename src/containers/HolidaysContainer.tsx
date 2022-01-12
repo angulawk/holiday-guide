@@ -73,12 +73,14 @@ function HolidaysContainer(): JSX.Element {
         control={control}
         countryName={holidays?.name || ""}
         imageSrc={!isGettingCountryList ? `https://flagcdn.com/32x24/${holidays?.alpha2Code.toLowerCase()}.png` : ""}
-        isLoading={isGettingHolidaysList || isGettingCountryList}
+        isCheckboxLoading={isGettingHolidaysList}
+        isLoading={isGettingCountryList}
         onClick={() => navigate("/")}
       />
 
       <HolidaysCalendar
         eventsList={eventsList}
+        isLoading={isGettingHolidaysList}
       />
     </PageContainer>      
   );

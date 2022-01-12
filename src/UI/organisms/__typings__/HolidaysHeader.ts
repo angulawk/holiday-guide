@@ -7,5 +7,6 @@ export interface IHolidaysHeaderProps {
   countryName: string;
   imageSrc: string;
   isLoading: boolean;
+  isCheckboxLoading: boolean;
   onClick: () => void;
 }

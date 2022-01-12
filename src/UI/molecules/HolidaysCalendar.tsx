@@ -62,13 +62,14 @@ function eventStyleGetter(event: { isPublic?: boolean }) {
 }
 
 const HolidaysCalendar = ({
-  eventsList
+  eventsList,
+  isLoading
 }: IHolidaysCalendarProps): JSX.Element => (
   <LayoutContainer marginTop="spacing20">
     <HolidaysCalendarContainer
       components={{
-        toolbar: (toolbar) => (
-          <CalendarToolbar {...toolbar} />
+        toolbar: (toolbar) =>  (
+          <CalendarToolbar {...toolbar} isLoading={isLoading} />
         )
       }}
       defaultDate={new Date(2021, 0, 1)}
@@ -80,7 +81,8 @@ const HolidaysCalendar = ({
 );
 
 HolidaysCalendar.propTypes = {
-  eventsList: PropTypes.arrayOf(PropTypes.object)
+  eventsList: PropTypes.arrayOf(PropTypes.object),
+  isLoading: PropTypes.bool
 };
 
 export { HolidaysCalendar };

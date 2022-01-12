@@ -4,13 +4,13 @@ import moment from "moment";
 
 import styled, { css, FlattenSimpleInterpolation } from "styled-components";
 
-import { ToolbarProps } from "react-big-calendar";
-
 import { breakpoints } from "styles/variables/breakpoints";
 
 import { Text } from "UI/atoms/Text";
 import { Button } from "UI/molecules/Button";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
+
+import { IToolbarProps } from "UI/molecules/__typings__/CalendarToolbar";
 
 const CalendarToolbarContainer = styled.div``;
 
@@ -37,8 +37,9 @@ const calendarToolbarCustomCss = `
   }
 `;
 
-const CalendarToolbar: React.FC<ToolbarProps> = ({
+const CalendarToolbar: React.FC<IToolbarProps> = ({
   date,
+  isLoading,
   onNavigate,
   onView
 }) => {
@@ -92,14 +93,17 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         <LayoutContainer>
           <Button
             buttonText="Month"
+            isDisabled={isLoading}
             onClick={goToMonthView}
           />
           <Button
             buttonText="Week"
+            isDisabled={isLoading}
             onClick={goToWeekView}
           />
           <Button
             buttonText="Day"
+            isDisabled={isLoading}
             onClick={goToDayView}
           />
         </LayoutContainer>
@@ -111,15 +115,18 @@ const CalendarToolbar: React.FC<ToolbarProps> = ({
         marginTop="spacing16"
       >
         <Button
-          buttonText={"Prev"}
+          buttonText="Prev"
+          isDisabled={isLoading}
           onClick={goToBack}
         />
         <Button
-          buttonText={"Today"}
+          buttonText="Today"
+          isDisabled={isLoading}
           onClick={goToCurrent}
         />
         <Button
-          buttonText={"Next"}
+          buttonText="Next"
+          isDisabled={isLoading}
           onClick={goToNext}
         />
       </LayoutContainer>

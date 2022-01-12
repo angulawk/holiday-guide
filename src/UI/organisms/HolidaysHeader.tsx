@@ -44,6 +44,7 @@ function HolidaysHeader({
   control,
   countryName,
   imageSrc,
+  isCheckboxLoading,
   isLoading,
   onClick
 }: IHolidaysHeaderProps): JSX.Element {
@@ -62,7 +63,6 @@ function HolidaysHeader({
         <LayoutContainer customCss={holidaysContainerButtonCustomCss}>
           <Button
             buttonText="Back to country list"
-            isDisabled={isLoading}
             onClick={onClick}
             type="secondary"
           />
@@ -77,14 +77,14 @@ function HolidaysHeader({
       >
         <Checkbox
           control={control}
-          disabled={isLoading}
+          disabled={isCheckboxLoading}
           label="Public holidays"
           name="PublicHolidays"
         />
 
         <Checkbox
           control={control}
-          disabled={isLoading}
+          disabled={isCheckboxLoading}
           label="Non public holidays"
           name="NonPublicHolidays"
         />
@@ -94,12 +94,13 @@ function HolidaysHeader({
 }
 
 HolidaysHeader.propTypes = {
-  alt: PropTypes.string,
-  control: PropTypes.object,
-  countryName: PropTypes.string,
-  imageSrc: PropTypes.string,
-  isLoading: PropTypes.bool,
-  onClick: PropTypes.func
+  alt: PropTypes.string.isRequired,
+  control: PropTypes.object.isRequired,
+  countryName: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+  isCheckboxLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export { HolidaysHeader };
