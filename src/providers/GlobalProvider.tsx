@@ -1,42 +1,41 @@
-import React, { createContext, useCallback, useState } from "react";
+import React, { createContext } from "react";
+
+import { useCountryList } from "hooks/api/useCountryList";
+import { useHolidaysList } from "hooks/api/useHolidaysList";
 
 import {
   IGlobalProviderProps,
-  IGlobalContext,
-  TAppState,
-  TAppStateKeys
+  IGlobalContext
 } from "providers/__typings__/GlobalProvider";
 
 const GlobalContext = createContext<IGlobalContext>({
-  appState: {
-    isGettingCountryList: false,
-    isGettingHolidaysList: false
-  },
-  isAppLoading: false,
-  updateAppState: () => false
+  countryList: [],
+  holidaysList: [],
+  isGettingCountryList: false,
+  isGettingHolidaysList: false,
+  publicHolidays: [],
+  nonPublicHolidays: []
 });
 
-function GlobalProvider({ children }: IGlobalProviderProps): JSX.Element {  
-  const [appState, setAppState] = useState<TAppState>({
-    isGettingCountryList: false,
-    isGettingHolidaysList: false
-  });
-
-  const updateAppState = useCallback((key: TAppStateKeys, value: boolean) => {
-    setAppState((_appState) => ({
-      ..._appState,
-      [key]: value
-    }));
-  }, []);
-
-  const isAppLoading = Object.values(appState).includes(true);
+function GlobalProvider({ children }: IGlobalProviderProps): JSX.Element {
+  const { countryList, isGettingCountryList } = useCountryList() || {};
+  
+  const {
+    holidaysList,
+    isGettingHolidaysList,
+    publicHolidays,
+    nonPublicHolidays
+  } = useHolidaysList();
 
   return (
     <GlobalContext.Provider
       value={{
-        appState,
-        isAppLoading,
-        updateAppState
+        countryList,
+        holidaysList,
+        isGettingCountryList,
+        isGettingHolidaysList,
+        publicHolidays,
+        nonPublicHolidays,
       }}
     >
       {children}
