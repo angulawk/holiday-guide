@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 
 import { useMatch, useNavigate } from "react-router-dom";
 
@@ -6,12 +6,11 @@ import { useForm } from "react-hook-form";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 
-import { useCountryList } from "hooks/api/useCountryList";
-import { useHolidaysList } from "hooks/api/useHolidaysList";
-
 import { PageContainer } from "UI/atoms/PageContainer";
 import { HolidaysCalendar } from "UI/molecules/HolidaysCalendar";
 import { HolidaysHeader } from "UI/organisms/HolidaysHeader";
+import { GlobalContext } from "providers/GlobalProvider";
+import { IGlobalContext } from "providers/__typings__/GlobalProvider";
 
 const defaultValues = {
   NonPublicHolidays: false,
@@ -20,14 +19,15 @@ const defaultValues = {
 
 function HolidaysContainer(): JSX.Element {
   const {
+    countryList,
     holidaysList,
+    isGettingCountryList,
     isGettingHolidaysList,
     publicHolidays,
     nonPublicHolidays
-  } = useHolidaysList();
-  const navigate = useNavigate();
+  } = useContext<IGlobalContext>(GlobalContext);
 
-  const { countryList, isGettingCountryList } = useCountryList();
+  const navigate = useNavigate();
 
   const { control, watch } = useForm({ defaultValues });
   const isPublicHolidaysChecked = watch()?.PublicHolidays;

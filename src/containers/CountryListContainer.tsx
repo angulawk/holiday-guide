@@ -1,9 +1,7 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 
 import { useForm } from "react-hook-form";
 import { useNavigate, useLocation } from "react-router-dom";
-
-import { useCountryList } from "hooks/api/useCountryList";
 
 import { Text } from "UI/atoms/Text";
 import { Image } from "UI/atoms/Image";
@@ -11,9 +9,11 @@ import { PageContainer } from "UI/atoms/PageContainer";
 import { Table } from "UI/organisms/Table";
 import { SearchInput } from "UI/molecules/SearchInput";
 import { LayoutContainer } from "UI/layout/LayoutContainer";
+import { IGlobalContext } from "providers/__typings__/GlobalProvider";
+import { GlobalContext } from "providers/GlobalProvider";
 
 function CountryListContainer(): JSX.Element {
-  const { countryList, isGettingCountryList } = useCountryList() || {};
+  const { countryList, isGettingCountryList } = useContext<IGlobalContext>(GlobalContext);
 
   const search = useLocation().search;
   const navigate = useNavigate();

@@ -1,16 +1,11 @@
-import React, { useCallback, useContext, useEffect, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 
 import { useMatch } from "react-router-dom";
 
 import { getHolidaysList } from "api/getHolidaysList";
-import { GlobalContext } from "providers/GlobalProvider";
-
-import { IGlobalContext } from "providers/__typings__/GlobalProvider";
 import { IHolidaysList } from "api/__typings__/getHolidaysList";
 
 function useHolidaysList() {
-  const { updateAppState } = useContext<IGlobalContext>(GlobalContext);
-
   const [holidaysList, setHolidaysList] = useState<IHolidaysList["holidays"]>([]);
 
   const holidaysMatch = useMatch(
@@ -22,6 +17,8 @@ function useHolidaysList() {
   const [isGettingHolidaysList, setIsGettingHolidaysList] = useState<boolean>(false);
 
   const fetchHolidaysList = useCallback(async () => {
+    if(!alpha2Code) return;
+    
     try {
       setIsGettingHolidaysList(true);
 
@@ -51,10 +48,6 @@ function useHolidaysList() {
     fetchHolidaysList();
   }, [fetchHolidaysList]);
   
-  useEffect(() => {
-    updateAppState("isGettingHolidaysList", isGettingHolidaysList);
-  }, [isGettingHolidaysList, updateAppState]);
-
   return {
     holidaysList,
     isGettingHolidaysList,

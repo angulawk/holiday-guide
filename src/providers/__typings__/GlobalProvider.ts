@@ -1,17 +1,17 @@
 import React from "react";
 
+import { TCountryList } from "api/__typings__/getCountryList";
+import { IHolidays } from "api/__typings__/getHolidaysList";
+
 export interface IGlobalProviderProps {
   children: JSX.Element | JSX.Element[] | React.ReactNode;
 }
 
-export type TAppStateKeys =
-  | "isGettingCountryList"
-  | "isGettingHolidaysList";
-
-export type TAppState = Record<TAppStateKeys, boolean>;
-
 export interface IGlobalContext {
-  appState: TAppState;
-  isAppLoading: boolean;
-  updateAppState: (key: TAppStateKeys, value: boolean) => void;
+  countryList: TCountryList;
+  holidaysList: IHolidays[];
+  isGettingCountryList: boolean;
+  isGettingHolidaysList: boolean;
+  publicHolidays: IHolidays[];
+  nonPublicHolidays: IHolidays[];
 }
